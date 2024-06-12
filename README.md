@@ -1,1 +1,1 @@
-# Algoritmi-za-preuredjivanje-genoma---elektronska-lekcija
+# Algoritmi za preuredjivanje genoma - elektronska lekcija
