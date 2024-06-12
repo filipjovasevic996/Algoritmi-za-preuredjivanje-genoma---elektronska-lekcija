@@ -1,8 +1,15 @@
 import axios from "axios";
-import { baseUrl } from "constants/constants";
+import { BASE_URL } from "constants/constants";
 
-export const getData = async (path: string, body: any) => {
-  const { data } = await axios.get<number>(`${baseUrl}${path}`, body);
+export const getNumberOfBreakpoints = async (path: string, body: any) => {
+  const { data } = await axios.post<number>(`${BASE_URL}${path}`, body);
+  return data;
+};
 
+export const getPermutations = async (path: string, body: any) => {
+  const { data } = await axios.post<{
+    permutations: number[][];
+    permutationDistance: number;
+  }>(`${BASE_URL}${path}`, body);
   return data;
 };

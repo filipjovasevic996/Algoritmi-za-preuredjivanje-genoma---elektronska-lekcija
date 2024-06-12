@@ -6,7 +6,10 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('/greedy-sorting-by-reversals')
-  greedySortingByReversals(@Body() input: any): number {
+  greedySortingByReversals(@Body() input: any): {
+    permutations: number[][];
+    permutationDistance: number;
+  } {
     return this.appService.greedySortingByReversals(input);
   }
 

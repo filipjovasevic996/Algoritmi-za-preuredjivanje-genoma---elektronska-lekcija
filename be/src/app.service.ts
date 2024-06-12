@@ -6,6 +6,7 @@ export class AppService {
   greedySortingByReversals(input: { P: number[]; verbose: boolean }) {
     let { P, verbose } = input;
     let permutationDistance: number = 0;
+    const permutations: number[][] = [];
     const n: number = P.length;
 
     for (let k = 0; k < n; k++) {
@@ -15,7 +16,7 @@ export class AppService {
         permutationDistance++;
 
         if (verbose) {
-          console.log(P);
+          permutations.push(P);
         }
       }
       // nakon primene prethodne rotacije moze se desiti da smo doveli dobar blok na svoje mesto
@@ -25,11 +26,11 @@ export class AppService {
         permutationDistance++;
 
         if (verbose) {
-          console.log(P);
+          permutations.push(P);
         }
       }
     }
-    return permutationDistance;
+    return { permutationDistance, permutations };
   }
 
   numberOfBreakpoints(input: { P: number[] }): number {

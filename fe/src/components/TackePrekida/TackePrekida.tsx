@@ -1,34 +1,22 @@
-import { tabIndent } from "constants/constants";
+import { TAB_INDENT } from "constants/constants";
 import SablonAlgoritma from "../SablonAlgoritma";
+import Slika from "components/Slika";
 
 const TackePrekida: React.FC = () => {
   return (
     <>
       <p>
-        {tabIndent}Na slici ispod može se analizirati kako se sa svakom sledećom
-        permutacijom početna približava permutacijij identiteta. U prvom
-        preokretu sekcije (-12 -8 -7 -6 +1 +2 +10 +9 -11), na desnoj krajnjoj
-        tački umesto provbitna dva uzastopna elementa (-11 +13), dobijaju se
-        poželjni elementi (+12 +13). U četvrtom preokretu (+11 -9) dobijaju se
-        uzastopni elementi (-11 -10) koji prostim obrtanjem stvara interval sa
-        poželjnim uzastopnim elementima (+10 +11).
+        {TAB_INDENT}Na slici ispod može se analizirati kako se sa svakom
+        sledećom permutacijom početna približava permutacijij identiteta. U
+        prvom preokretu sekcije (-12 -8 -7 -6 +1 +2 +10 +9 -11), na desnoj
+        krajnjoj tački umesto provbitna dva uzastopna elementa (-11 +13),
+        dobijaju se poželjni elementi (+12 +13). U četvrtom preokretu (+11 -9)
+        dobijaju se uzastopni elementi (-11 -10) koji prostim obrtanjem stvara
+        interval sa poželjnim uzastopnim elementima (+10 +11).
       </p>
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        <img
-          src="/images/tackePrekida.png"
-          alt="Tacke prekida"
-          style={{
-            objectFit: "cover",
-            width: "60%",
-          }}
-        />
-      </div>
+      <Slika path="tackePrekida" altText="Tacke prekida" />
       <p>
-        {tabIndent}Naslućuje se da je formiranje sekcija sa uzastopnim
+        {TAB_INDENT}Naslućuje se da je formiranje sekcija sa uzastopnim
         elementima kao što su (+12 +13) ili (-11 -10) poželjno. Za navedene
         parove je zajedničko to što je drugi za 1 veći od prvog, pa se za
         uzastopne elemente (p<sub>i</sub> p<sub>i+1</sub>) u permutaciji P = (p
@@ -52,10 +40,11 @@ const TackePrekida: React.FC = () => {
       </p>
       <h4>Brojanje tačaka prekida</h4>
       <p>
-        {tabIndent}Pošto je objašnjeno da svaki par uzastopnih elemenata formira
-        ili tačku prekida ili susednost, za svaku permutaciju P, dužine n, važi:
-        Susednice (P) + Prelomne tačke (P) = n + 1. Jedina permutacija kod koje
-        su svi uzastopni elementi ujedno i susedni, je permutacija identiteta.
+        {TAB_INDENT}Pošto je objašnjeno da svaki par uzastopnih elemenata
+        formira ili tačku prekida ili susednost, za svaku permutaciju P, dužine
+        n, važi: Susednice (P) + Prelomne tačke (P) = n + 1. Jedina permutacija
+        kod koje su svi uzastopni elementi ujedno i susedni, je permutacija
+        identiteta.
       </p>
       <h4>ALGORITAM ODREĐIVANJA BROJA PRELOMNIH TAČAKA</h4>
       <SablonAlgoritma
@@ -64,8 +53,8 @@ const TackePrekida: React.FC = () => {
         resultText="Broj tacaka prekida je"
       />
       <p>
-        {tabIndent}Sortiranje preokretima se, u stvari, eliminišu tačke prekida.
-        Na slici (link) se broj tačaka prekida smanjuje sa 8 na 0, jer
+        {TAB_INDENT}Sortiranje preokretima se, u stvari, eliminišu tačke
+        prekida. Na slici (link) se broj tačaka prekida smanjuje sa 8 na 0, jer
         permutacija posle svakog preokreta postaje uređenija i bliža permutaciji
         identiteta, pa je potreban broj tačaka preloma sve manji.
       </p>

@@ -1,6 +1,9 @@
-import { getData } from "api/getData";
-import axios from "axios";
-import { baseUrl } from "constants/constants";
+import { getNumberOfBreakpoints, getPermutations } from "api/getData";
+import Permutacija from "components/Permutacija/Permutacija";
+import {
+  PERMUTATION_INPUT_LABEL,
+  PERMUTATION_LENGTH_LABEL,
+} from "constants/constants";
 import { isPermutationComplete, uniquePermutation } from "helpers/permutations";
 import { useState } from "react";
 
@@ -17,6 +20,7 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
 }) => {
   const [permutationLength, setPermutationLength] = useState(0);
   const [permutation, setPermutation] = useState<number[]>([]);
+  const [permutations, setPermutations] = useState<number[][]>([]);
   const [result, setResult] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -32,7 +36,19 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
       return;
     }
 
-    const data = await getData(endpoint, { P: permutation });
+    let data;
+    if (endpoint === "number-of-breakpoints") {
+      data = await getNumberOfBreakpoints(endpoint, {
+        P: permutation,
+      });
+    } else {
+      const { permutations, permutationDistance } = await getPermutations(
+        endpoint,
+        { P: permutation, verbose: true }
+      );
+      data = permutationDistance;
+      setPermutations(permutations);
+    }
     setResult(data);
   };
 
@@ -54,6 +70,8 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
     setPermutation([...permutation]);
   };
 
+  console.log("PERMUTATIONS: ", permutations);
+
   return (
     <>
       <div
@@ -62,10 +80,10 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
           flexDirection: "column",
           padding: "10px",
           border: "1px solid",
-          height: "200px",
+          // height: "200px",
         }}
       >
-        <label>Unesi duzinu permutacije</label>
+        <label>{PERMUTATION_LENGTH_LABEL}</label>
         <input
           type="number"
           style={{ width: "40px" }}
@@ -73,7 +91,7 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
           max={15}
           onChange={handleChange}
         />
-        {permutationLength ? <label>Unesi permutaciju</label> : null}
+        {permutationLength ? <label>{PERMUTATION_INPUT_LABEL}</label> : null}
         <div
           style={{
             display: "flex",
@@ -107,9 +125,15 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
         )}
         <span style={{ color: "red" }}>{errorMessage}</span>
         {!!result && (
-          <label>
-            {resultText}: {result}
-          </label>
+          <>
+            {!!permutations &&
+              permutations.map((permutation) => (
+                <Permutacija permutation={permutation} />
+              ))}
+            <label>
+              {resultText}: {result}
+            </label>
+          </>
         )}
       </div>
     </>

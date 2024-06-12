@@ -1,9 +1,9 @@
-import { tabIndent } from "constants/constants";
+import { TAB_INDENT } from "constants/constants";
 
 const PreuredjivanjeGenoma: React.FC = () => {
   return (
     <p>
-      {tabIndent}Kada bi bilo moguće napraviti porodično stablo miša i čoveka,
+      {TAB_INDENT}Kada bi bilo moguće napraviti porodično stablo miša i čoveka,
       unazad skoro 80 miliona godina, na vrhu stabla bi bio isti predak. Do tog
       zaključka je dovelo poređenje genoma miša i čoveka i činjenica da više od
       90% mišjih gena, postoji u sličnom obliku u ljudskom genomu. Ljudi i
@@ -17,12 +17,12 @@ const PreuredjivanjeGenoma: React.FC = () => {
       kao slaganje 280 kockica, tj. blokova sintenije, u slučaju čoveka u 23
       para hromozoma, a u slučaju „slaganja“ genoma miša, u 20 parova hromozoma.
       <br />
-      {tabIndent}To znači da se evulitivni procesi zasnivaju na postepenom
+      {TAB_INDENT}To znači da se evulitivni procesi zasnivaju na postepenom
       preuređevanju genoma, koje, u dovoljno dugom vremenskom periodu, dovodi do
       funkcionalno i vizuelno drastičnih razlika kod potomaka, u odnosu na
       zajedničkog pretka.
       <br />
-      {tabIndent}To znači da se evulitivni procesi zasnivaju na postepenom
+      {TAB_INDENT}To znači da se evulitivni procesi zasnivaju na postepenom
       preuređevanju genoma, koje, u dovoljno dugom vremenskom periodu, dovodi do
       funkcionalno i vizuelno drastičnih razlika kod potomaka, u odnosu na
       zajedničkog pretka.
@@ -33,7 +33,7 @@ const PreuredjivanjeGenoma: React.FC = () => {
         <li>fusijom (cepanjem)</li>
         <li>fisijom (spajanjem)</li>
       </ul>
-      {tabIndent}Dostupnost genoma čoveka i miša utrla je put za razvoj
+      {TAB_INDENT}Dostupnost genoma čoveka i miša utrla je put za razvoj
       algoritama za mapiranje sintenije velikih razmera i bolje razumevanje
       evolutivnih procesa.
     </p>

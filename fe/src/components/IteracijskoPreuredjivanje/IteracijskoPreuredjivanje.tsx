@@ -1,31 +1,19 @@
-import { tabIndent } from "constants/constants";
+import Slika from "components/Slika";
+import { TAB_INDENT } from "constants/constants";
 
 const IteracijskoPreuredjivanje: React.FC = () => {
   return (
     <>
       <p>
-        {tabIndent}Poređenje mišjeg i ljudskog hromozoma je rađeno na jednom od
+        {TAB_INDENT}Poređenje mišjeg i ljudskog hromozoma je rađeno na jednom od
         dva hromozoma koji određuje pol, hromozomu <i>X</i>, jer je kroz
         evoluciju „sačuvao“ skoro sve gene. Na slici ispod, prikazana je
         istorija hromozoma X.
       </p>
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        <img
-          src="/images/odMisaDoCoveka.png"
-          alt="Od misa do čoveka"
-          style={{
-            objectFit: "cover",
-            width: "60%",
-          }}
-        />
-      </div>
+      <Slika path="odMisaDoCoveka" altText="Od misa do coveka" />
       <br />
       <p>
-        {tabIndent}Na slici 6.2 je prikazana jedna od mogućih transformacija
+        {TAB_INDENT}Na slici 6.2 je prikazana jedna od mogućih transformacija
         mišjeg <i>X</i> hromozoma u ljudski <i>X</i> hromozom u sedam preokreta.
         Svaki blok sintenije je označen bojom, celim brojem od 1 do 11 i smerom
         koji je predznak svakog celog broja (+ na desno, - na levo). Dva kratka
@@ -39,23 +27,10 @@ const IteracijskoPreuredjivanje: React.FC = () => {
         od 1.070 mogućih scenarija od sedam iteracija kroz koji je se <i>X</i>{" "}
         hromozom miša može trasformisti u ljudski <i>X</i> hromozom.
       </p>
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        <img
-          src="/images/preuredjivanje.png"
-          alt="Preuredjivanje"
-          style={{
-            objectFit: "cover",
-            width: "60%",
-          }}
-        />
-      </div>
+      <Slika path="preuredjivanje" altText="Preuredjivanje" />
       <br />
       <p>
-        {tabIndent} Permutacija u kojoj su blokovi sintenije poređani po
+        {TAB_INDENT} Permutacija u kojoj su blokovi sintenije poređani po
         rastućem redosledu i svi imaju pozitivan predznak, naziva se
         permutacijom identiteta. Ona je dodeljena kao model ljudskom <i>X</i>{" "}
         hromozomu, ali to nije pravilo. Moglo je biti i obrnuto, i samo je stvar

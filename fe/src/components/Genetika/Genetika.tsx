@@ -1,37 +1,28 @@
-import { tabIndent } from "constants/constants";
+import Slika from "components/Slika";
+import { TAB_INDENT } from "constants/constants";
 
 const Genetika: React.FC = () => {
   return (
     <>
       <p>
-        {tabIndent}Gen je osnovna fizička i funkcionalna jedinica nasleđa koji
+        {TAB_INDENT}Gen je osnovna fizička i funkcionalna jedinica nasleđa koji
         se sastoji od DNK. Kod ljudi, kompleksnost gena varira od nekoliko
         stotina do više od 2 miliona baza DNK.
-        <br /> {tabIndent}Hromozom je struktura koja se sastoji od molekula DNK
+        <br /> {TAB_INDENT}Hromozom je struktura koja se sastoji od molekula DNK
         čvrsto umotanih mnogo puta oko proteina zvanih histoni koji podržavaju
         njegovu strukturu. Ljudi imaju 46 hromozoma u svakoj ćeliji, podeljenih
         u 23 para, za razliku od miševa ili šimpanzi koji imaju, respektivno 20
         i 24 parova.
         <br />
         <br />
-        <div
-          style={{
-            textAlign: "center",
-          }}
-        >
-          <img
-            src="/images/hromozom.png"
-            alt="Hromozom"
-            style={{ objectFit: "cover", width: "60%" }}
-          />
-        </div>
+        <Slika path="hromozom" altText="Hromozom" />
         <br />
-        {tabIndent}Genom ili genotip je skup svih gena organizma i on sadrži
+        {TAB_INDENT}Genom ili genotip je skup svih gena organizma i on sadrži
         kompletan nasledni materijal jednog organizma. To znači da se evolucija
         genoma zasniva na preuređivanju hromozoma, tj. promeni rasporeda gena na
         hromozomima. Genom je jedinstven za svakog pojedinca, a procenjuje se da
         ljudski genom sadrži 20 do 25 hiljada gena koji kodiraju proteine.
-        <br /> {tabIndent}Ljudi više od polovine genetskog materijala dele sa
+        <br /> {TAB_INDENT}Ljudi više od polovine genetskog materijala dele sa
         pilićima, voćnim mušicama i bananama. To je rezultat sekvencioniranja
         ljudskog genoma, prvi put izvršenog 2003. godine, koje je otkrilo da
         čovek deli zajedničku DNK sa mnogim drugim živim organizmima. Ali, taj
