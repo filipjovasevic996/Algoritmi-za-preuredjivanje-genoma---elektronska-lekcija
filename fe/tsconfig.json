@@ -15,10 +15,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./",
-    "paths": {
-      "@constants/*": ["src/constants/*"]
-    }
+    "baseUrl": "./src"
   },
-  "include": ["src", "Routes.ts"]
+  "include": ["src", "Routes.ts"],
+  "exclude": ["node_modules"],
+  "extends": "./tsconfig.paths.json"
 }

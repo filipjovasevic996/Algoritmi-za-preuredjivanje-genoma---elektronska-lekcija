@@ -34,7 +34,10 @@ function CustomTabPanel(props: TabPanelProps) {
           <Tabs
             value={subTab}
             hidden={value !== index}
-            onChange={(_, newTab) => setSubTab(newTab)}
+            onChange={(_, newTab) => {
+              setSubTab(newTab);
+              window.scrollTo(0, 0);
+            }}
             aria-label="sub-sections"
             style={{
               position: "fixed",
@@ -122,6 +125,7 @@ const HomePage: React.FC = () => {
             onChange={(_, newTab) => {
               setTab(newTab);
               setSubTab(0);
+              window.scrollTo(0, 0);
             }}
             aria-label="sections"
             sx={{ height: "100%" }}

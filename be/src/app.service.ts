@@ -40,6 +40,6 @@ export class AppService {
       if (P[i + 1] - P[i] === 1) adjancecies++;
     }
 
-    return length - 1 - adjancecies;
+    return length + 1 - adjancecies;
   }
 }
