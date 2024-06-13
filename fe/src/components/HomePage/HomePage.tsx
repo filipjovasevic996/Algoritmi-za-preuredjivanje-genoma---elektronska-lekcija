@@ -12,6 +12,7 @@ import IteracijskoPreuredjivanje from "../IteracijskoPreuredjivanje/IteracijskoP
 import ZaristaLomova from "../ZaristaLomova";
 import PohlepnaHeuristika from "../PohlepnaHeuristika";
 import TackePrekida from "../TackePrekida";
+import MultihromozomalniGenomi from "components/MultihormoyomalniGenomi/MultihromozomalniGenomi";
 
 interface TabPanelProps {
   index: number;
@@ -101,13 +102,14 @@ const HomePage: React.FC = () => {
       { "Blokovi sintenije i tačke prekida sintenije": <BlokoviSintenije /> },
     ],
     [
-      { "Iteracijsko preuređivanje": <IteracijskoPreuredjivanje /> },
+      { Poredjenje: <IteracijskoPreuredjivanje /> },
       { "Žarišta lomova": <ZaristaLomova /> },
     ],
     [
       { "Sortiranje po preokretima": <SortingByReversals /> },
       { "Pohlepna heuristika": <PohlepnaHeuristika /> },
       { "Tačke prekida": <TackePrekida /> },
+      { "Translokacija, fuzija, fisija": <MultihromozomalniGenomi /> },
     ],
   ];
 

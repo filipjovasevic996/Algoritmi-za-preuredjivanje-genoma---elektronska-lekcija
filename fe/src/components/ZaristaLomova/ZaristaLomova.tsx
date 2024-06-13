@@ -31,7 +31,7 @@ const ZaristaLomova: React.FC = () => {
         potpuno istoj poziciji, tada N slučajnih preokreta preseca hromozom na N
         lokacija i proizvede 2N + 1 blokova sintenije.
       </p>
-      <Slika path="1" altText="Broj blokova sintenije" />
+      <Slika path="VelicinaBS1" altText="Broj blokova sintenije" />
       <p>
         Slika 6.3 (gore) prikazuje rezultat računarskog eksperimenta u kome se
         320 slučajnih preokreta primenjuje na simulirani hromozom koji se
@@ -48,25 +48,7 @@ const ZaristaLomova: React.FC = () => {
         potvrđeni i desetak godina kasnije, ali se i dalje ne mogu prihvatiti
         kao konačni.
       </p>
-      <Slika path="2" altText="Broj blokova sintenije" />
-      <p>
-        {TAB_INDENT}Tražimo minimalni broj preokreta u skladu sa principom tzv
-        Okamove oštrice. Kada se nađemo u nedoumici, trebalo bi da to objasnimo
-        koristeći najjednostavniju hipotezu koja podržava ono što je već
-        poznato. U ovom slučaju, čini se najrazumnije da bi se evolucija između
-        dve vrste kretala najkraćim putem. Evolucija možda neće uvek uzeti
-        najkraći put, ali čak i kada to ne čini, broj koraka u pravom
-        evolucionom scenario se često približava broju koraka u najštedljivijem
-        scenariju.
-        <br />
-        {TAB_INDENT}Studije preuređivanja genoma obično zanemaruju dužinu
-        blokova sintenije i predstavljaju hromozome potpisanim permutacijama.
-        Svaki blok je označen brojem, kome se dodeljuje pozitivan/negativan
-        predznak u zavisnosti od smera bloka. Broj elemenata u permutaciji
-        određuje njenu dužinu. Kao što možete videti na slici 6.2, ljudski i
-        mišji <i>X</i> hromozomi mogu biti predstavljeni sledećim potpisanim
-        permutacije dužine 11:
-      </p>
+      <Slika path="VelicinaBS2" altText="Broj blokova sintenije" />
     </>
   );
 };

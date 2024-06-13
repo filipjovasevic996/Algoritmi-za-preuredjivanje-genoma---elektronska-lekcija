@@ -61,6 +61,12 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
     }
   };
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      getResult(permutation);
+    }
+  };
+
   const handlePermutationChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number,
@@ -106,6 +112,7 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
               style={{ width: "40px" }}
               max={permutationLength}
               min={-permutationLength}
+              onKeyUp={handleKeyPress}
               onChange={(event) => {
                 handlePermutationChange(event, i, permutation);
                 setErrorMessage("");
@@ -126,13 +133,17 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
         <span style={{ color: "red" }}>{errorMessage}</span>
         {!!result && (
           <>
-            {!!permutations &&
-              permutations.map((permutation) => (
-                <Permutacija permutation={permutation} />
-              ))}
             <label>
               {resultText}: {result}
             </label>
+            {permutations.length ? (
+              <>
+                <label>Permutacije su:</label>
+                {permutations.map((permutation, index) => (
+                  <Permutacija key={index} permutation={permutation} />
+                ))}
+              </>
+            ) : null}
           </>
         )}
       </div>

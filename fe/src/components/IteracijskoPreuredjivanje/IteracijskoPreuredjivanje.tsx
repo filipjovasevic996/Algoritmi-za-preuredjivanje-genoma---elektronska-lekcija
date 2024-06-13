@@ -8,7 +8,7 @@ const IteracijskoPreuredjivanje: React.FC = () => {
         {TAB_INDENT}Poređenje mišjeg i ljudskog hromozoma je rađeno na jednom od
         dva hromozoma koji određuje pol, hromozomu <i>X</i>, jer je kroz
         evoluciju „sačuvao“ skoro sve gene. Na slici ispod, prikazana je
-        istorija hromozoma X.
+        istorija hromozoma <i>X</i> .
       </p>
       <Slika path="odMisaDoCoveka" altText="Od misa do coveka" />
       <br />
@@ -27,7 +27,7 @@ const IteracijskoPreuredjivanje: React.FC = () => {
         od 1.070 mogućih scenarija od sedam iteracija kroz koji je se <i>X</i>{" "}
         hromozom miša može trasformisti u ljudski <i>X</i> hromozom.
       </p>
-      <Slika path="preuredjivanje" altText="Preuredjivanje" />
+      <Slika path="poredjenje" altText="Poredjenje" />
       <br />
       <p>
         {TAB_INDENT} Permutacija u kojoj su blokovi sintenije poređani po

@@ -19,24 +19,35 @@ const PohlepnaHeuristika: React.FC = () => {
       </p>
       <Slika path="greedySorting" altText="PohlepnoSortiranje" />
       <p>
-        {TAB_INDENT}Matematički izraženo, element k u permutaciji{" "}
+        {TAB_INDENT}Matematički izraženo, element <i>k</i> u permutaciji{" "}
         <i>
-          P = (p<sub>1</sub> ... p<sub>n</sub>)
+          P = (<i>p</i>
+          <sub>1</sub> ... <i>p</i>
+          <sub>
+            <i>n</i>
+          </sub>
+          )
         </i>
-        je sortiran ako je p<sub>k</sub> = +k, u protivnom je nesortiran.
-        Permutacija P je k-sortirana ako je njenih prvih k-1 elemenata sortirano
-        i ako je element k nesortiran. Za svaku (k-1)-sortiranu permutaciju P,
-        postoji jedan preokret, nazvan k-sortirajući preokret, koji fiksira
-        prvih k-1 elemenata permutacije i pomera element k na ispravnu, k-tu
-        poziciju. U slučaju kada je k već na k-toj poziciji permutacije P, ali
-        nije dobro orjentisan, k-sortiranje se samo okreće k-ti element (primer
-        bloka 11 u poslednjem koraku).
+        je sortiran ako je <i>p</i>
+        <sub>
+          <i>k</i>{" "}
+        </sub>{" "}
+        = +<i>k</i> , u protivnom je nesortiran. Permutacija P je
+        <i>k</i> -sortirana ako je njenih prvih <i>k</i> -1 elemenata sortirano
+        i ako je element
+        <i>k</i> nesortiran. Za svaku (<i>k</i> -1)-sortiranu permutaciju P,
+        postoji jedan preokret, nazvan <i>k</i> -sortirajući preokret, koji
+        fiksira prvih <i>k</i> -1 elemenata permutacije i pomera element{" "}
+        <i>k</i> na ispravnu, <i>k</i> -tu poziciju. U slučaju kada je <i>k</i>{" "}
+        već na <i>k</i> -toj poziciji permutacije P, ali nije dobro orjentisan,{" "}
+        <i>k</i> -sortiranje se samo okreće <i>k</i> -ti element (primer bloka
+        11 u poslednjem koraku).
         <br />
-        {TAB_INDENT}U slučaju preuređivanja mišjeg X hromozoma, na ovaj način se
-        do permutacije identiteta dolazi u 11 koraka, što ne predstavlja
-        optimalnu dužinu, jer je sortiranjem po preokretima preuređivanje kraće
-        za čak 4 koraka. Tako je na ovom primeru dokazano da pohlepno sortiranje
-        ne rezultira najkraćom dužinom preokreta.
+        {TAB_INDENT}U slučaju preuređivanja mišjeg <i>X</i> hromozoma, na ovaj
+        način se do permutacije identiteta dolazi u 11 koraka, što ne
+        predstavlja optimalnu dužinu, jer je sortiranjem po preokretima
+        preuređivanje kraće za čak 4 koraka. Tako je na ovom primeru dokazano da
+        pohlepno sortiranje ne rezultira najkraćom dužinom preokreta.
       </p>
     </>
   );

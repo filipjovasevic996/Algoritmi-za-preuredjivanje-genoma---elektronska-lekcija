@@ -19,8 +19,8 @@ const SortingByReversals: React.FC = () => {
         Svaki blok je označen brojem, kome se dodeljuje pozitivan/negativan
         predznak u zavisnosti od smera bloka. Broj elemenata u permutaciji
         određuje njenu dužinu. Kao što je prikazano na slici 6.2 (link na sliku
-        i klik za nazad), ljudski i mišji X hromozomi mogu biti predstavljeni
-        sledećim potpisanim permutacijama dužine 11:
+        i klik za nazad), ljudski i mišji <i>X</i> hromozomi mogu biti
+        predstavljeni sledećim potpisanim permutacijama dužine 11:
         <br />
         <ul>
           Miš: (+1 -7 +6 -10 +9 -8 +2 -11 -3 +5 +4)
@@ -43,7 +43,7 @@ const SortingByReversals: React.FC = () => {
       <Slika path="preokreti" altText="Preokreti" />
       <p>
         {TAB_INDENT}U algoritmu koji sledi, izračunava se broj preokreta, tj.
-        dužina preokreta za permutaciju dužine n, od unete permutacije do
+        dužina preokreta za permutaciju dužine <i>n</i>, od unete permutacije do
         permutacije identiteta:
       </p>
 
