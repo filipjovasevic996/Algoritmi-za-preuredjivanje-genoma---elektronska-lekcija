@@ -31,7 +31,7 @@ const IteracijskoPreuredjivanje: React.FC = () => {
       <br />
       <p>
         {TAB_INDENT} Permutacija u kojoj su blokovi sintenije poređani po
-        rastućem redosledu i svi imaju pozitivan predznak, naziva se
+        rastućem redosledu i svi imaju pozitivno usmerenje, naziva se
         permutacijom identiteta. Ona je dodeljena kao model ljudskom <i>X</i>{" "}
         hromozomu, ali to nije pravilo. Moglo je biti i obrnuto, i samo je stvar
         izbora onoga ko modeluje koju će permutaciju proglasiti permutacijom

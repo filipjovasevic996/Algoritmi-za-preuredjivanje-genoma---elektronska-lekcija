@@ -11,7 +11,6 @@ export class AppService {
 
     for (let k = 0; k < n; k++) {
       if (P[k] !== k + 1) {
-        // k-ti element nije na svom mestu
         P = applySortingReversals(P, k);
         permutationDistance++;
 
@@ -19,8 +18,6 @@ export class AppService {
           permutations.push(P);
         }
       }
-      // nakon primene prethodne rotacije moze se desiti da smo doveli dobar blok na svoje mesto
-      // ali da ima pogresno usmerenje, pa je potrebno izvrsiti jos jednu rotaciju samo oko njega
       if (P[k] === -(k + 1)) {
         P[k] = -P[k];
         permutationDistance++;

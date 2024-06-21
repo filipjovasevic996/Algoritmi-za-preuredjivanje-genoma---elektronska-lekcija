@@ -13,6 +13,7 @@ import ZaristaLomova from "../ZaristaLomova";
 import PohlepnaHeuristika from "../PohlepnaHeuristika";
 import TackePrekida from "../TackePrekida";
 import MultihromozomalniGenomi from "components/MultihormoyomalniGenomi/MultihromozomalniGenomi";
+import GenomeGraph from "components/GenomeGraph";
 
 interface TabPanelProps {
   index: number;
@@ -34,15 +35,17 @@ function CustomTabPanel(props: TabPanelProps) {
         <>
           <Tabs
             value={subTab}
-            hidden={value !== index}
             onChange={(_, newTab) => {
               setSubTab(newTab);
               window.scrollTo(0, 0);
             }}
+            variant="scrollable"
+            scrollButtons={true}
+            allowScrollButtonsMobile
             aria-label="sub-sections"
             style={{
               position: "fixed",
-              width: "100%",
+              width: "80%",
               zIndex: "2",
               background: "white",
             }}
@@ -106,10 +109,13 @@ const HomePage: React.FC = () => {
       { "Žarišta lomova": <ZaristaLomova /> },
     ],
     [
-      { "Sortiranje po preokretima": <SortingByReversals /> },
+      { "Sortiranje po promenama": <SortingByReversals /> },
       { "Pohlepna heuristika": <PohlepnaHeuristika /> },
       { "Tačke prekida": <TackePrekida /> },
-      { "Translokacija, fuzija, fisija": <MultihromozomalniGenomi /> },
+      { "Translokacija, fuzija, fizija": <MultihromozomalniGenomi /> },
+      {
+        "Od genoma do grafa": <GenomeGraph />,
+      },
     ],
   ];
 
@@ -142,7 +148,7 @@ const HomePage: React.FC = () => {
             ))}
           </Tabs>
         </Grid>
-        <Grid item xs={10} style={{ marginLeft: "210px" }}>
+        <Grid item xs={10} style={{ marginLeft: "200px" }}>
           {contents.map((content, index) => {
             return (
               <CustomTabPanel

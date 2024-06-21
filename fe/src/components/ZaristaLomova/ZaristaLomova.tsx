@@ -19,17 +19,15 @@ const ZaristaLomova: React.FC = () => {
         scenario preuređenja ostati nepoznat, pitanje je da li se, uopšte i može
         utvrditi da li postoje žarišta preuređivanja. <br />
         {TAB_INDENT}Prva hipoteza žarišta loma pretpostavila je da oni nastaju
-        nasumično i nju je postavio japansko-američki genetičar i evolucioni
-        biolog <i>Susumu Ohno</i>, 1973. godine, ali bez opipljivih dokaza.
-        Nakon 11 godina <i>Joseph Nadeau</i> i <i>Benjamin Taylor</i> su
-        testirali model slučajnog lomljenja analizom distribucije dužina blokova
-        sintenije. Na primer, dužine sintenije čoveka i miša variraju u velikoj
-        meri, pri čemu najveći blok (blok 11 na slici 6.2) zauzima skoro 25%
-        dužine <i>X</i> hromozoma. Oni su postavili pitanje koje dužine blokova
-        sintenije treba očekivati nakon N nasumičnih preokreta. Ako se isključi
-        malo verovatan događaj da dva slučajna preokreta preseku hromozom u
-        potpuno istoj poziciji, tada N slučajnih preokreta preseca hromozom na N
-        lokacija i proizvede 2N + 1 blokova sintenije.
+        nasumično, ali nakon testiranja modela slučajnog lomljenja analizom
+        distribucije duzina blokova, došlo se do nekog obrasca. Na primer,
+        dužine sintenije čoveka i miša variraju u velikoj meri, pri čemu najveći
+        blok (blok 11 na slici 6.2) zauzima skoro 25% dužine <i>X</i> hromozoma.
+        Oni su postavili pitanje koje dužine blokova sintenije treba očekivati
+        nakon N nasumičnih preokreta. Ako se isključi malo verovatan događaj da
+        dva slučajna preokreta preseku hromozom u potpuno istoj poziciji, tada N
+        slučajnih preokreta preseca hromozom na N lokacija i proizvede 2N + 1
+        blokova sintenije.
       </p>
       <Slika path="VelicinaBS1" altText="Broj blokova sintenije" />
       <p>

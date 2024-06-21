@@ -73,9 +73,9 @@ const TackePrekida: React.FC = () => {
       <p>
         {TAB_INDENT}Pošto je objašnjeno da svaki par uzastopnih elemenata
         formira ili tačku prekida ili susednost, za svaku permutaciju P, dužine
-        <i>n</i>, važi: Susednice (P) + Prelomne tačke (P) = <i>n</i> + 1.
-        Jedina permutacija kod koje su svi uzastopni elementi ujedno i susedni,
-        je permutacija identiteta.
+        <i>n</i>, važi: Susedi (P) + Prekidi (P) = <i>n</i> + 1. Jedina
+        permutacija kod koje su svi uzastopni elementi ujedno i susedni, je
+        permutacija identiteta.
       </p>
       <h4>Algoritam za određivanje broja tačaka prekida</h4>
       <SablonAlgoritma
@@ -84,7 +84,7 @@ const TackePrekida: React.FC = () => {
         resultText="Broj tacaka prekida je"
       />
       <p>
-        {TAB_INDENT}Sortiranje preokretima se, u stvari, eliminišu tačke
+        {TAB_INDENT}Sortiranjem po preokretima se, u stvari, eliminišu tačke
         prekida. Na slici (link) se broj tačaka prekida smanjuje sa 8 na 0, jer
         permutacija posle svakog preokreta postaje uređenija i bliža permutaciji
         identiteta, pa je potreban broj tačaka preloma sve manji. Preokretanjem
@@ -105,12 +105,23 @@ const TackePrekida: React.FC = () => {
         Dakle, jedine tačke prekida koje se mogu eliminisati preokretom su dve
         tačke prekida koje se nalaze na granicama obrnutog intervala. To znači
         da jednim obrtanjem možemo eliminisati maksimalno dve tačke prekida.
-        Ovaj zaključak nas dovodi do <b> Teoreme o tačkama prekida</b> koja
+        Ovaj zaključak nas dovodi do <b> Teoreme o prekidnoj tački</b> koja
         glasi: <br />
-        BrojObrtanja(P) &ge; BrojTacakaPrekida(P)/2 <br />
+        <div
+          style={{
+            backgroundColor: "lightgray",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          BrojObrtanja(P) &ge; BrojTacakaPrekida(P)/2
+        </div>
         Sa druge strane, maksimalan broj obrtanja koje dovodi do jedinične
         permutacije je <i>n</i> + 1 i to u slučaju obrnute permutacije:
-        <br /> (+<i>n</i> &nbsp;+(<i>n</i> - 1) ... +1)
+        <br /> (+<i>n</i> &nbsp;+(<i>n</i> - 1) ... +1).
+        <br /> Najmanji broj promena potrebnih za transformaciju u jedniničnu
+        permutaciju predstavlja <b>rastojanje permutacije</b>.
       </p>
     </>
   );

@@ -30,13 +30,13 @@ const SortingByReversals: React.FC = () => {
         {TAB_INDENT}Bitno je naglasiti da su blokovi sintenije jedinstveni i da
         ponavljanje brojeva, sa ili bez znaka, nije dozvoljeno. Modelovanje
         preokreta se zasniva na obrtanju elemenata, tj. blokova sintenije unutar
-        intervala permutacije, nakon čega se menja predznak elementima unutar
+        intervala permutacije, nakon čega se menja usmerenje elementima unutar
         obrnutog intervala. Na primeru razbijanja permutacije između blokova +3
         i +4 kao i između blokova +8 i +9, to izgleda ovako:
         <br />
         „Odseca“ se deo između vertikalnih segmenata (+1 +2 +3 | +4 +5 +6 +7 +8
-        | +9 +10), zatim se inerval okreće i menja se znak elementima unutar
-        njega (+1 +2 +3 | -8 -7 -6 -5 -4 | +9 +10) i, na kraju, „lepi“ uz
+        | +9 +10), zatim se interval okreće i menja se usmerenje elementima
+        unutar njega (+1 +2 +3 | -8 -7 -6 -5 -4 | +9 +10) i, na kraju, „lepi“ uz
         segmente koji su ostali nepromenjeni (+1 +2 +3 -8 -7 -6 -5 -4 +9 +10),
         kako je prikazano na slici ispod.
       </p>
