@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { GenomeGraphService } from './genome-graph/genome-graph.service';
 
 @Controller()
 export class AppController {
@@ -16,5 +17,10 @@ export class AppController {
   @Post('/number-of-breakpoints')
   numberOfBreakpoints(@Body() input: any): number {
     return this.appService.numberOfBreakpoints(input);
+  }
+
+  @Post('two-break-distance')
+  getTwoBreakDistance(@Body() input: { P: number[][]; Q: number[][] }): number {
+    return this.appService.getTwoBreakDistance(input);
   }
 }

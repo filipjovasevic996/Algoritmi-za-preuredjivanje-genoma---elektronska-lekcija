@@ -13,3 +13,8 @@ export const getPermutations = async (path: string, body: any) => {
   }>(`${BASE_URL}${path}`, body);
   return data;
 };
+
+export const getTwoBreakDistance = async (path: string, body: any) => {
+  const { data } = await axios.post<number>(`${BASE_URL}${path}`, body);
+  return data;
+};

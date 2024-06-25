@@ -4,7 +4,10 @@ import {
   PERMUTATION_INPUT_LABEL,
   PERMUTATION_LENGTH_LABEL,
 } from "constants/constants";
-import { isPermutationComplete, uniquePermutation } from "helpers/permutations";
+import {
+  isPermutationIncomplete,
+  uniquePermutation,
+} from "helpers/permutations";
 import { useState } from "react";
 
 interface SablonAlogritmaProps {
@@ -25,7 +28,7 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
   const [errorMessage, setErrorMessage] = useState("");
 
   const getResult = async (permutation: number[]) => {
-    if (isPermutationComplete(permutation)) {
+    if (isPermutationIncomplete(permutation)) {
       setErrorMessage("Unesite vrednosti razlicite od nule");
       return;
     }
@@ -76,8 +79,6 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
     setPermutation([...permutation]);
   };
 
-  console.log("PERMUTATIONS: ", permutations);
-
   return (
     <>
       <div
@@ -86,7 +87,6 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
           flexDirection: "column",
           padding: "10px",
           border: "1px solid",
-          // height: "200px",
         }}
       >
         <label>{PERMUTATION_LENGTH_LABEL}</label>

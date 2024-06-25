@@ -38,6 +38,40 @@ const GenomeGraph: React.FC = () => {
         koje povezuju 𝑏 sa 𝑑 i 𝑐 sa 𝑎.
         <br />
       </p>
+      <Slika path="brisanjeGrana" altText="Brisanje grana" />
+      <p>
+        Na slici ispod ilustrovana je fizija hromozoma 𝑃 = ( + 𝑎 - 𝑏 - 𝑐 + 𝑑 ) u
+        dva manja hromozoma 𝑄 = ( + 𝑎 - 𝑏 ) i ( - 𝑐 + 𝑑 ). Obrnuti proces ove
+        operacije, to jest fuzija dva hromozoma 𝑄 kako bi se ponovno formirao
+        hromozom 𝑃, takođe se može predstaviti preko 2-prekida. Operacije fuzije
+        i fizije, slično kao i u prethodnoj transformaciji, uključuju brisanje
+        dve grane u jednom genomu i njihovu zamenu sa dve nove u drugom.
+      </p>
+      <Slika
+        path="translokacijaCirkularni"
+        altText="Translokacija u cirkularnom grafu"
+      />
+
+      <p>
+        Translokacije koje uključuju dva linearna hromozoma mogu se predstaviti
+        i na cirkularnom hromozomu zamenom dve crvene ivice sa dve različite
+        crvene ivice, kao što je prikazano na slici ispod.
+      </p>
+      <Slika
+        path="translokacijaMultihromozom"
+        altText="Translokacija u cirkularnom grafu"
+      />
+
+      <p>
+        Možemo zaključiti da se sve pomenute operacije, nad lienarnim
+        hromozomima, mogu predstaviti u cirkularnoj reprezentaciji i to kao
+        prekidanje dve crvene grane i njihova zamena sa dve nove crvene grane
+        nad istim čvorovima. Ovu operaciju na genomskom grafu nazivamo
+        2-prekidom. Naš cilj je da utvrdimo najmanji broj 2-prekida koji
+        transformiše genom 𝑃 u genom 𝑄. Broj takvih operacija, koje transformišu
+        𝑃 u 𝑄, nazivamo 2-prekid rastojanjem između 𝑃 i 𝑄, i označavamo ga sa
+        𝑑(𝑃, 𝑄).
+      </p>
     </>
   );
 };

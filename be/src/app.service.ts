@@ -1,3 +1,8 @@
+import {
+  coloredEdges,
+  getCycles,
+  initializeGraph,
+} from '@helpers/breakPointGraph';
 import { applySortingReversals } from '@helpers/sortingByReversals';
 import { Injectable } from '@nestjs/common';
 
@@ -39,5 +44,14 @@ export class AppService {
     }
 
     return length + 1 - adjancecies;
+  }
+
+  getTwoBreakDistance(input: { P: number[][]; Q: number[][] }): number {
+    const syntenyBlocks = input.P[0].length;
+    const redEdges = coloredEdges(input.P);
+    const blueEdges = coloredEdges(input.Q);
+    const breakPointGraph = initializeGraph(redEdges.concat(blueEdges));
+    const numberOfCycles = getCycles(breakPointGraph);
+    return syntenyBlocks - numberOfCycles.length;
   }
 }

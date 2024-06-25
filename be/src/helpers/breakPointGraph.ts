@@ -1,3 +1,59 @@
+export const initializeGraph = (
+  edges: [number, number][],
+): Record<number, number[]> => {
+  const adjacencyList: Record<number, number[]> = {};
+  edges.forEach(([u, v]) => {
+    if (!adjacencyList[u]) {
+      adjacencyList[u] = [];
+    }
+    if (!adjacencyList[v]) {
+      adjacencyList[v] = [];
+    }
+    adjacencyList[u].push(v);
+    adjacencyList[v].push(u);
+  });
+
+  return adjacencyList;
+};
+
+export const getCycles = (
+  breakPointGraph: Record<number, number[]>,
+): number[][] => {
+  const unvisited: number[] = Object.keys(breakPointGraph).map((key) =>
+    Number(key),
+  );
+  const cycles: number[][] = [];
+
+  while (unvisited.length > 0) {
+    let v = unvisited[0];
+    const currentCycle: number[] = [v];
+    unvisited.splice(unvisited.indexOf(v), 1);
+
+    while (true) {
+      let nextV: number | null = null;
+      for (const w of breakPointGraph[v]) {
+        if (unvisited.includes(w)) {
+          nextV = w;
+          break;
+        }
+      }
+
+      if (!nextV) {
+        break;
+      }
+
+      currentCycle.push(nextV);
+      console.log('Current cycle 2: ', currentCycle);
+      unvisited.splice(unvisited.indexOf(nextV), 1);
+      v = nextV;
+    }
+
+    cycles.push(currentCycle);
+  }
+
+  return cycles;
+};
+
 export const chromosomeToCycle = (chromosome: number[]): number[] => {
   const n: number = chromosome.length;
   const cycle: number[] = new Array(2 * n).fill(0);
@@ -5,12 +61,10 @@ export const chromosomeToCycle = (chromosome: number[]): number[] => {
   for (let i = 0; i < n; i++) {
     const j: number = chromosome[i];
 
-    // pozitivno orijentisanu granu obilazimo od polaznog_cvora do dolaznog_cvora
     if (j > 0) {
       cycle[2 * i] = 2 * j - 1;
       cycle[2 * i + 1] = 2 * j;
     } else {
-      // negativno orijentisanu granu obilazimo od dolaznog_cvora do polaznog_cvora
       cycle[2 * i] = -2 * j;
       cycle[2 * i + 1] = -2 * j - 1;
     }
@@ -23,11 +77,9 @@ export const cycleToChromosome = (cycleNodes: number[]): number[] => {
   const chromosome: number[] = new Array(m / 2).fill(0);
 
   for (let j = 0; j < m; j += 2) {
-    // pozitivno orijentisanu granu smo obilazili od polaznog_cvora do dolaznog_cvora
     if (cycleNodes[j] < cycleNodes[j + 1]) {
       chromosome[j / 2] = cycleNodes[j + 1] / 2;
     } else {
-      // negativno orijentisanu granu smo obilazili od dolaznog_cvora do polaznog_cvora
       chromosome[j / 2] = -cycleNodes[j] / 2;
     }
   }

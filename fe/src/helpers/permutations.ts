@@ -1,4 +1,4 @@
-export const isPermutationComplete = (permutation: number[]) =>
+export const isPermutationIncomplete = (permutation: number[]) =>
   permutation.some((permutationNumber) => permutationNumber === 0);
 
 export const uniquePermutation = (permutation: number[]) => {

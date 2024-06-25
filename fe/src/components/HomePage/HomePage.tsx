@@ -14,6 +14,8 @@ import PohlepnaHeuristika from "../PohlepnaHeuristika";
 import TackePrekida from "../TackePrekida";
 import MultihromozomalniGenomi from "components/MultihormoyomalniGenomi/MultihromozomalniGenomi";
 import GenomeGraph from "components/GenomeGraph";
+import BreakPointGraph from "components/BreakPointGraph";
+import TwoBreakDistance from "components/TwoBreakDistance";
 
 interface TabPanelProps {
   index: number;
@@ -115,6 +117,12 @@ const HomePage: React.FC = () => {
       { "Translokacija, fuzija, fizija": <MultihromozomalniGenomi /> },
       {
         "Od genoma do grafa": <GenomeGraph />,
+      },
+      {
+        "Break point graf": <BreakPointGraph />,
+      },
+      {
+        "2-prekid rastojanje": <TwoBreakDistance />,
       },
     ],
   ];
