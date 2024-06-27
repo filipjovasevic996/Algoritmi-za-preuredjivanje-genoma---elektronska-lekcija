@@ -43,7 +43,6 @@ export const getCycles = (
       }
 
       currentCycle.push(nextV);
-      console.log('Current cycle 2: ', currentCycle);
       unvisited.splice(unvisited.indexOf(nextV), 1);
       v = nextV;
     }
@@ -116,4 +115,80 @@ export const blackEdges = (P: number[][]): [number, number][] => {
   }
 
   return edges;
+};
+
+const removeUndirectedEdge = (
+  breakPointGraph: Record<number, number[]>,
+  [edgeNode1, edgeNode2]: [number, number],
+): Record<number, number[]> => {
+  breakPointGraph[edgeNode1] = breakPointGraph[edgeNode1].filter(
+    (node) => node !== edgeNode2,
+  );
+  breakPointGraph[edgeNode2] = breakPointGraph[edgeNode2].filter(
+    (node) => node !== edgeNode1,
+  );
+
+  return breakPointGraph;
+};
+
+const addUndirectedEdge = (
+  breakPointGraph: Record<number, number[]>,
+  [edgeNode1, edgeNode2]: [number, number],
+): Record<number, number[]> => {
+  if (!breakPointGraph[edgeNode1]) {
+    breakPointGraph[edgeNode1] = [];
+  }
+  if (!breakPointGraph[edgeNode2]) {
+    breakPointGraph[edgeNode2] = [];
+  }
+  breakPointGraph[edgeNode1].push(edgeNode2);
+  breakPointGraph[edgeNode2].push(edgeNode1);
+
+  return breakPointGraph;
+};
+
+export const twoBreakOnGenomeGraph = (
+  breakPointGraph: Record<number, number[]>,
+  i: number,
+  i_p: number,
+  j: number,
+  j_p: number,
+): Record<number, number[]> => {
+  breakPointGraph = removeUndirectedEdge(breakPointGraph, [i, i_p]);
+  breakPointGraph = removeUndirectedEdge(breakPointGraph, [j, j_p]);
+
+  breakPointGraph = addUndirectedEdge(breakPointGraph, [i, j]);
+  breakPointGraph = addUndirectedEdge(breakPointGraph, [i_p, j_p]);
+
+  return breakPointGraph;
+};
+
+const graphToGenome = (
+  breakPointGraph: Record<number, number[]>,
+): number[][] => {
+  const P: number[][] = [];
+
+  const cycles = getCycles(breakPointGraph);
+
+  for (const cycle of cycles) {
+    const chromosome = cycleToChromosome(cycle);
+    P.push(chromosome);
+  }
+
+  return P;
+};
+
+export const twoBreakOnGenome = (
+  P: number[][],
+  i: number,
+  i_p: number,
+  j: number,
+  j_p: number,
+): number[][] => {
+  let genomeGraph = initializeGraph([...blackEdges(P), ...coloredEdges(P)]);
+  genomeGraph = twoBreakOnGenomeGraph(genomeGraph, i, i_p, j, j_p);
+
+  P = graphToGenome(genomeGraph);
+
+  return P;
 };

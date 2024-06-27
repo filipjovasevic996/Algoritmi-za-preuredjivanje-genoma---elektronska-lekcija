@@ -2,6 +2,8 @@ import {
   coloredEdges,
   getCycles,
   initializeGraph,
+  twoBreakOnGenome,
+  twoBreakOnGenomeGraph,
 } from '@helpers/breakPointGraph';
 import { applySortingReversals } from '@helpers/sortingByReversals';
 import { Injectable } from '@nestjs/common';
@@ -53,5 +55,71 @@ export class AppService {
     const breakPointGraph = initializeGraph(redEdges.concat(blueEdges));
     const numberOfCycles = getCycles(breakPointGraph);
     return syntenyBlocks - numberOfCycles.length;
+  }
+
+  shortestRearrangementScenario(input: { P: number[][]; Q: number[][] }): any {
+    let { P, Q } = input;
+
+    let permutationDistance = 0;
+    const permutations = [];
+
+    const redEdges = coloredEdges(P);
+    const blueEdges = coloredEdges(Q);
+    let breakpointGraph = initializeGraph([...redEdges, ...blueEdges]);
+
+    while (true) {
+      const cycles = getCycles(breakpointGraph);
+
+      let selectedCycle: number[] | null = null;
+      for (const cycle of cycles) {
+        if (cycle.length > 2) {
+          selectedCycle = cycle;
+          break;
+        }
+      }
+
+      if (selectedCycle === null) {
+        break;
+      }
+
+      const selectedCycleEdges = selectedCycle.map((_, i) =>
+        i < selectedCycle.length - 1
+          ? [selectedCycle[i], selectedCycle[i + 1]]
+          : [selectedCycle[selectedCycle.length - 1], selectedCycle[0]],
+      );
+
+      const n = selectedCycleEdges.length;
+      let k = Math.floor(Math.random() * n);
+
+      let selectedEdge = selectedCycleEdges[k];
+      let [u, v] = selectedEdge;
+
+      if (
+        !blueEdges.some(
+          (edge) =>
+            (edge[0] === u && edge[1] === v) ||
+            (edge[0] === v && edge[1] === u),
+        )
+      ) {
+        k = (k + 1) % n;
+      }
+
+      selectedEdge = selectedCycleEdges[k];
+      const previousRedEdge = selectedCycleEdges[(k - 1 + n) % n];
+      const nextRedEdge = selectedCycleEdges[(k + 1) % n];
+
+      const [i_p, _] = previousRedEdge;
+      const [i, __] = selectedEdge;
+      const [j, j_p] = nextRedEdge;
+
+      breakpointGraph = twoBreakOnGenomeGraph(breakpointGraph, i, i_p, j, j_p);
+      permutationDistance += 1;
+
+      P = twoBreakOnGenome(P, i, i_p, j, j_p);
+      permutations.push(P);
+      console.log(P);
+    }
+
+    return { permutations, permutationDistance };
   }
 }

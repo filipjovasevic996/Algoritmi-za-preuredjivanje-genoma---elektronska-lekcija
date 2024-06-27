@@ -18,3 +18,14 @@ export const getTwoBreakDistance = async (path: string, body: any) => {
   const { data } = await axios.post<number>(`${BASE_URL}${path}`, body);
   return data;
 };
+
+export const shortestRearrangementScenario = async (
+  path: string,
+  body: any
+) => {
+  const { data } = await axios.post<{
+    permutations: number[][];
+    permutationDistance: number;
+  }>(`${BASE_URL}${path}`, body);
+  return data;
+};

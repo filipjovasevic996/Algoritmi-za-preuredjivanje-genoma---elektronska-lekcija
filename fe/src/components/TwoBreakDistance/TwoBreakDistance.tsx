@@ -1,3 +1,4 @@
+import SablonAlgoritma from "components/SablonAlgoritma";
 import TwoBreakDistanceAlgorithm from "components/TwoBreakDistanceAlgorithm";
 
 const TwoBreakDistance: React.FC = () => {
@@ -56,6 +57,18 @@ const TwoBreakDistance: React.FC = () => {
       <TwoBreakDistanceAlgorithm
         buttonText="Izračunaj rastojanje"
         resultText="Rastojanje je"
+      />
+      <p>
+        Ispod se nalazi algoritam koji prikazuje najkraći scenario
+        transformacija jednog genoma u drugi korišćenjem 2-prekida. <br />
+        Treba uneti samo permutaciju P, jer se za Q uzima jedinična permutacija.
+      </p>
+
+      <SablonAlgoritma
+        buttonText="Prikaži permutacije i rastojanje"
+        endpoint="shortest-rearrangement-scenario"
+        resultText="2-prekid rastojanje je"
+        shortestRearrangement={true}
       />
     </>
   );

@@ -1,4 +1,8 @@
-import { getNumberOfBreakpoints, getPermutations } from "api/getData";
+import {
+  getNumberOfBreakpoints,
+  getPermutations,
+  shortestRearrangementScenario,
+} from "api/getData";
 import Permutacija from "components/Permutacija/Permutacija";
 import {
   PERMUTATION_INPUT_LABEL,
@@ -14,12 +18,14 @@ interface SablonAlogritmaProps {
   endpoint: string;
   buttonText: string;
   resultText: string;
+  shortestRearrangement?: boolean;
 }
 
 const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
   endpoint,
   buttonText,
   resultText,
+  shortestRearrangement,
 }) => {
   const [permutationLength, setPermutationLength] = useState(0);
   const [permutation, setPermutation] = useState<number[]>([]);
@@ -44,6 +50,16 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
       data = await getNumberOfBreakpoints(endpoint, {
         P: permutation,
       });
+    } else if (endpoint === "shortest-rearrangement-scenario") {
+      const Q = Array.from({ length: permutation.length }, (_, i) => i + 1);
+      const { permutations, permutationDistance } =
+        await shortestRearrangementScenario(endpoint, {
+          P: [permutation],
+          Q: [Q],
+        });
+
+      data = permutationDistance;
+      setPermutations(permutations);
     } else {
       const { permutations, permutationDistance } = await getPermutations(
         endpoint,
@@ -139,9 +155,13 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
             {permutations.length ? (
               <>
                 <label>Permutacije su:</label>
-                {permutations.map((permutation, index) => (
-                  <Permutacija key={index} permutation={permutation} />
-                ))}
+                {permutations.map((permutation, index) => [
+                  <Permutacija
+                    key={index}
+                    permutation={permutation}
+                    shortestRearrangement={shortestRearrangement}
+                  />,
+                ])}
               </>
             ) : null}
           </>

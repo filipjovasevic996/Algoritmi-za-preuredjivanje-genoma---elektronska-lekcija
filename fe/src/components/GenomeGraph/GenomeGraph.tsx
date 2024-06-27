@@ -18,8 +18,8 @@ const GenomeGraph: React.FC = () => {
         {TAB_INDENT}Cirkularni hromozomi od n blokova sintenije mogu biti
         predstavljeni na 2n različitih načina. Na primer, levi hromozom sa slike
         možemo napisati na sledeće načine: (+a -b -c +d), (-b -c +d +a), (-c +d
-        +a -b), (+d +a -b -c), (-a -d +c +b) (-d +c +b -a), (+c +b -a -d), and
-        (+b -a -d +c), sve u zavisnosti od toga odakle započnemo ciklus i u kom
+        +a -b), (+d +a -b -c), (-a -d +c +b) (-d +c +b -a), (+c +b -a -d) i (+b
+        -a -d +c), sve u zavisnosti od toga odakle započnemo ciklus i u kom
         smeru idemo.
         <br />
         {TAB_INDENT}Posvetićemo se analizi transformacije kružnog hromozoma 𝑃 =
