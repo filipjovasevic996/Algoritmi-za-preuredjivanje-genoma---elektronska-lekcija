@@ -6,13 +6,13 @@ const TackePrekida: React.FC = () => {
   return (
     <>
       <p>
-        {TAB_INDENT}Na slici ispod može se analizirati kako se sa svakom
-        sledećom permutacijom početna približava permutacijij identiteta. U
-        prvom preokretu sekcije (-12 -8 -7 -6 +1 +2 +10 +9 -11), na desnoj
-        krajnjoj tački umesto provbitna dva uzastopna elementa (-11 +13),
-        dobijaju se poželjni elementi (+12 +13). U četvrtom preokretu (+11 -9)
-        dobijaju se uzastopni elementi (-11 -10) koji prostim obrtanjem stvara
-        interval sa poželjnim uzastopnim elementima (+10 +11).
+        {TAB_INDENT}Pomoću slike 3.3, može se analizirati kako se sa svakom
+        sledećom permutacijom početna približava identičkoj permutaciji. U prvom
+        preokretu sekcije (-12 -8 -7 -6 +1 +2 +10 +9 -11), na desnoj krajnjoj
+        tački umesto prvobitna dva uzastopna elementa (-11 +13), dobijaju se
+        poželjni elementi (+12 +13). U četvrtom preokretu (+11 -9) dobijaju se
+        uzastopni elementi (- 11 -10) koji prostim obrtanjem formiraju interval
+        sa poželjnim uzastopnim elementima (+10 +11).
       </p>
       <Slika path="tackePrekida" altText="Tacke prekida" />
       <p>
@@ -34,14 +34,15 @@ const TackePrekida: React.FC = () => {
         <sub>i+1</sub> - <i>p</i>
         <sub>i</sub> nije jednako 1, onda je (<i>p</i>
         <sub>i</sub> <i>p</i>
-        <sub>i+1</sub>) tačka prekida. Jednostavnije rečeno, tačka prekida
-        nastaje između parova uzastopnih elemenata koji su „van reda“ u
-        poređenju sa permutacijom identiteta (+1 +2 ... +<i>n</i>). Na primer,
-        parovi (+5 -12), (-12 -8), (-6 +1), (+2 +10), (+9 -11) i (-11 +13) su
-        očigledno tačke prekida jer nisu susedni. Ali, i par (+10 +9) je takođe
-        tačka prekida, uprkos tome što sadrži uzastopne brojeve. Razlog je to
-        što su njegovi predznaci van reda u poređenju sa permutacijom identiteta
-        i jer je <i>p</i>
+        <sub>i+1</sub>) tačka prekida.
+        <br />
+        {TAB_INDENT}Jednostavnije rečeno, tačka prekida nastaje između parova
+        uzastopnih elemenata koji su „van reda“ u poređenju sa permutacijom
+        identiteta (+1 +2 ... +<i>n</i>). Na primer, parovi (+5 -12), (-12 -8),
+        (-6 +1), (+2 +10), (+9 -11) i (-11 +13) su očigledno tačke prekida jer
+        nisu susedni. Ali, i par (+10 +9) je takođe tačka prekida, uprkos tome
+        što sadrži uzastopne brojeve. Razlog je to što su njegovi predznaci van
+        reda u poređenju sa permutacijom identiteta i jer je <i>p</i>
         <sub>i+1</sub> - <i>p</i>
         <sub>i</sub> = -1. Dodavanjem elemenata na početak (nula) i kraj
         permutacije (<i>n</i>+1), dobija se permutacija (0 <i>p</i>
@@ -75,7 +76,7 @@ const TackePrekida: React.FC = () => {
         formira ili tačku prekida ili susednost, za svaku permutaciju P, dužine
         <i>n</i>, važi: Susedi (P) + Prekidi (P) = <i>n</i> + 1. Jedina
         permutacija kod koje su svi uzastopni elementi ujedno i susedni, je
-        permutacija identiteta.
+        indentička permutacija.
       </p>
       <h4>Algoritam za određivanje broja tačaka prekida</h4>
       <SablonAlgoritma

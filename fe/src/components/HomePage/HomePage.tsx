@@ -107,8 +107,8 @@ const HomePage: React.FC = () => {
       { "Blokovi sintenije i tačke prekida sintenije": <BlokoviSintenije /> },
     ],
     [
-      { Poredjenje: <IteracijskoPreuredjivanje /> },
-      { "Žarišta lomova": <ZaristaLomova /> },
+      { Poređenje: <IteracijskoPreuredjivanje /> },
+      { "Mesta preuređivanja": <ZaristaLomova /> },
     ],
     [
       { "Sortiranje po promenama": <SortingByReversals /> },
@@ -119,7 +119,7 @@ const HomePage: React.FC = () => {
         "Od genoma do grafa": <GenomeGraph />,
       },
       {
-        "Break point graf": <BreakPointGraph />,
+        "Prekidni graf": <BreakPointGraph />,
       },
       {
         "2-prekid rastojanje": <TwoBreakDistance />,

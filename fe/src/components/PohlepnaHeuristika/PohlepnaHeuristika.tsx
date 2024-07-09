@@ -1,3 +1,4 @@
+import SablonAlgoritma from "components/SablonAlgoritma";
 import Slika from "components/Slika";
 import { TAB_INDENT } from "constants/constants";
 
@@ -6,16 +7,19 @@ const PohlepnaHeuristika: React.FC = () => {
     <>
       <p>
         {TAB_INDENT}Pohlepna heuristika za sortiranje po preokretima se zasniva
-        na pronalaženju najkraćeg niza preokreta koji pretvara jednu permutaciju
-        u drugu. Ona donosi optimalne izbore u svakom koraku, nadajući se da će
+        na pronalaženju najkraćeg niza preokreta koji pretvara jednu permutaciju
+        u drugu. Ona donosi optimalne izbore u svakom koraku, nadajući se da će
         na taj način postići i globalno optimalno rešenje.
         <br />
-        {TAB_INDENT}Pohlepno sortiranje je prikazano na primeru u kojem se
+        {TAB_INDENT} Pohlepno sortiranje je prikazano na primeru u kojem se
         blokovi ređaju na prave pozicije u konačnoj permutaciji. Preuređivanje
-        se vrši iteracijskim pomeranjem sve većih elemenata na njihove ispravne
-        pozicije u permutaciji identiteta. Obrnuti interval svakog preokreta je
-        prikazan crvenom bojom, a elementi koji su postavljeni u ispravan
-        položaj su prikazani plavom bojom.
+        se vrši iteracijskim pomeranjem elemenata na njihove ispravne pozicije,
+        prema konačnom redosledu u identičkoj permutaciji. Obrnuti interval
+        svakog preokreta je na slici 3.2 prikazan crvenom bojom, a elementi koji
+        su postavljeni u ispravan položaj su prikazani plavom bojom. Vidimo da
+        se blok sintenije 1 od starta nalazi na pravom mestu, pa je označen
+        plavom bojom. Blok sintenije 2 dolazi na svoje mestu u drugoj iteraciji
+        dok blok sintenije 3 u trećoj i tako redom.
       </p>
       <Slika path="greedySorting" altText="PohlepnoSortiranje" />
       <p>
@@ -49,6 +53,16 @@ const PohlepnaHeuristika: React.FC = () => {
         preuređivanje kraće za čak 4 koraka. Tako je na ovom primeru dokazano da
         pohlepno sortiranje ne rezultira najkraćom dužinom preokreta.
       </p>
+      <p>
+        {TAB_INDENT}U algoritmu koji sledi, izračunava se broj preokreta, tj.
+        dužina preokreta za permutaciju dužine <i>n</i>, od unete permutacije do
+        permutacije identiteta:
+      </p>
+      <SablonAlgoritma
+        endpoint="greedy-sorting-by-reversals"
+        buttonText="Izracunaj rastojanje"
+        resultText="Rastojanje je"
+      />
     </>
   );
 };
