@@ -30,4 +30,11 @@ export class AppController {
   } {
     return this.appService.shortestRearrangementScenario(input);
   }
+
+  @Post('k-mers')
+  getKmers(
+    @Body() input: { k: number; chromosome1: string; chromosome2: string },
+  ): [number, number][] {
+    return this.appService.getKmers(input);
+  }
 }

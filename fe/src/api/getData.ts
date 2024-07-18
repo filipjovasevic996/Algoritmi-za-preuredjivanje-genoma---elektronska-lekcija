@@ -29,3 +29,15 @@ export const shortestRearrangementScenario = async (
   }>(`${BASE_URL}${path}`, body);
   return data;
 };
+
+export const getKmers = async (
+  path: string,
+  body: { k: number; chromosome1: string; chromosome2: string }
+) => {
+  const { data } = await axios.post<[number, number][]>(
+    `${BASE_URL}${path}`,
+    body
+  );
+  console.log("DATA: ", data);
+  return data;
+};

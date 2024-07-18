@@ -94,6 +94,7 @@ const TwoBreakDistanceAlgorithm: React.FC<TwoBreakDistanceAlgorithmProps> = ({
         {[
           [...Array(2)].map((_, index) => (
             <div
+              key={index}
               style={{
                 display: "flex",
                 flexDirection: "row",

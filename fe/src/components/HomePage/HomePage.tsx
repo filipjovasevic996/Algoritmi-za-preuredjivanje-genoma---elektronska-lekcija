@@ -16,6 +16,8 @@ import MultihromozomalniGenomi from "components/MultihormoyomalniGenomi/Multihro
 import GenomeGraph from "components/GenomeGraph";
 import BreakPointGraph from "components/BreakPointGraph";
 import TwoBreakDistance from "components/TwoBreakDistance";
+import HotspotRearrangement from "components/HotspotRearrangement";
+import SyntenyBlocksForming from "components/SyntenyBlocksForming";
 
 interface TabPanelProps {
   index: number;
@@ -103,7 +105,6 @@ const HomePage: React.FC = () => {
       {
         Genetika: <Genetika />,
       },
-      { "Preuređivanje genoma": <PreuredjivanjeGenoma /> },
       { "Blokovi sintenije i tačke prekida sintenije": <BlokoviSintenije /> },
     ],
     [
@@ -123,6 +124,12 @@ const HomePage: React.FC = () => {
       },
       {
         "2-prekid rastojanje": <TwoBreakDistance />,
+      },
+      {
+        "Vruće tačke preuređivanja": <HotspotRearrangement />,
+      },
+      {
+        "Formiranje blokova sintenije": <SyntenyBlocksForming />,
       },
     ],
   ];

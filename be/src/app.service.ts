@@ -5,6 +5,7 @@ import {
   twoBreakOnGenome,
   twoBreakOnGenomeGraph,
 } from '@helpers/breakPointGraph';
+import { isKmer } from '@helpers/kMers';
 import { applySortingReversals } from '@helpers/sortingByReversals';
 import { Injectable } from '@nestjs/common';
 
@@ -121,5 +122,27 @@ export class AppService {
     }
 
     return { permutations, permutationDistance };
+  }
+
+  getKmers(input: {
+    k: number;
+    chromosome1: string;
+    chromosome2: string;
+  }): [number, number][] {
+    const { k, chromosome1, chromosome2 } = input;
+    const n = chromosome1.length;
+    let kMers: [number, number][] = [];
+
+    for (let i = 0; i < n - k + 1; i++) {
+      const substring1 = chromosome1.slice(i, i + k);
+      for (let j = 0; j < n - k + 1; j++) {
+        const substring2 = chromosome2.slice(j, j + k);
+        if (isKmer(substring1, substring2)) {
+          kMers.push([i, j]);
+        }
+      }
+    }
+
+    return kMers;
   }
 }
