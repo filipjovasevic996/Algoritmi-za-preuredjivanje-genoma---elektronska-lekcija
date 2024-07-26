@@ -1,11 +1,12 @@
 interface SlikaProps {
   path: string;
   altText: string;
+  caption: string;
 }
 
-const Slika: React.FC<SlikaProps> = ({ path, altText }) => {
+const Slika: React.FC<SlikaProps> = ({ path, altText, caption }) => {
   return (
-    <div
+    <figure
       style={{
         textAlign: "center",
       }}
@@ -18,7 +19,8 @@ const Slika: React.FC<SlikaProps> = ({ path, altText }) => {
           width: "60%",
         }}
       />
-    </div>
+      <figcaption>{caption}</figcaption>
+    </figure>
   );
 };
 

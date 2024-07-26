@@ -12,11 +12,15 @@ import { useState } from "react";
 interface TwoBreakDistanceAlgorithmProps {
   buttonText: string;
   resultText: string;
+  title: string;
+  listingOrder: number;
 }
 
 const TwoBreakDistanceAlgorithm: React.FC<TwoBreakDistanceAlgorithmProps> = ({
   buttonText,
   resultText,
+  title,
+  listingOrder,
 }) => {
   const [permutationLength, setPermutationLength] = useState(0);
   const [permutations, setPermutations] = useState<number[][]>([]);
@@ -76,70 +80,85 @@ const TwoBreakDistanceAlgorithm: React.FC<TwoBreakDistanceAlgorithmProps> = ({
     <>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
+          backgroundColor: "lightgray",
           padding: "10px",
-          border: "1px solid",
+          borderRadius: "6px",
         }}
       >
-        <label>{PERMUTATION_LENGTH_LABEL}</label>
-        <input
-          type="number"
-          style={{ width: "40px" }}
-          min={0}
-          max={15}
-          onChange={handleChange}
-        />
-        {permutationLength ? <label>{PERMUTATIONS_INPUT_LABEL}</label> : null}
-        {[
-          [...Array(2)].map((_, index) => (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                gap: "10px",
-                marginTop: "10px",
-              }}
+        <h4 style={{ marginTop: 0, textAlign: "center" }}> {title}</h4>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <label style={{ fontSize: "18px" }}>{PERMUTATION_LENGTH_LABEL}</label>
+          <input
+            type="number"
+            style={{ width: "40px" }}
+            min={0}
+            max={15}
+            onChange={handleChange}
+          />
+          {permutationLength ? <label>{PERMUTATIONS_INPUT_LABEL}</label> : null}
+          {[
+            [...Array(2)].map((_, index) => (
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "10px",
+                  marginTop: "10px",
+                }}
+              >
+                {[...Array(permutationLength)].map((e, i) => (
+                  <input
+                    type="number"
+                    style={{ width: "40px" }}
+                    max={permutationLength}
+                    min={-permutationLength}
+                    onKeyUp={handleKeyPress}
+                    onChange={(event) => {
+                      handlePermutationChange(
+                        event,
+                        i,
+                        permutations[index],
+                        index
+                      );
+                      setErrorMessage("");
+                      setResult(0);
+                    }}
+                  />
+                ))}
+              </div>
+            )),
+          ]}
+          {!!permutationLength && (
+            <button
+              style={{ marginTop: "20px", width: "40%" }}
+              onClick={() => getResult(permutations)}
             >
-              {[...Array(permutationLength)].map((e, i) => (
-                <input
-                  type="number"
-                  style={{ width: "40px" }}
-                  max={permutationLength}
-                  min={-permutationLength}
-                  onKeyUp={handleKeyPress}
-                  onChange={(event) => {
-                    handlePermutationChange(
-                      event,
-                      i,
-                      permutations[index],
-                      index
-                    );
-                    setErrorMessage("");
-                    setResult(0);
-                  }}
-                />
-              ))}
-            </div>
-          )),
-        ]}
-        {!!permutationLength && (
-          <button
-            style={{ marginTop: "20px", width: "40%" }}
-            onClick={() => getResult(permutations)}
-          >
-            {buttonText}
-          </button>
-        )}
+              {buttonText}
+            </button>
+          )}
 
-        <span style={{ color: "red" }}>{errorMessage}</span>
-        {!!result && (
-          <label>
-            {resultText}: {result}
-          </label>
-        )}
+          <span style={{ color: "red" }}>{errorMessage}</span>
+          {!!result && (
+            <label>
+              {resultText}: {result}
+            </label>
+          )}
+        </div>
       </div>
+      <span
+        style={{
+          display: "table",
+          margin: "auto",
+        }}
+      >
+        Listing {listingOrder} - {title}
+      </span>
     </>
   );
 };

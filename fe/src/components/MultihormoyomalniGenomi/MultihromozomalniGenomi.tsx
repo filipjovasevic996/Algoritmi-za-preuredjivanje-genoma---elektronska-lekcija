@@ -9,18 +9,26 @@ const MultihromozomalniGenomi: React.FC = () => {
         premeštanjima skupova gena, nisu jedini načini. Kod multihromozomalnih
         genoma preuređivanje se može desiti i na sledeće načine: translokacijom,
         fuzijom i fizijom.
-        <br />
-        {TAB_INDENT} Translokacija predstavlja razmenjivanje segmenata
-        različitih hromozoma. Na primer, genom (+1 +2 +3 +4 +5 +6)(+7 +8 +9 +10
-        +11) se sastoji od dva hromozoma (+1 +2 +3 +4 +5 +6) i (+7 +8 +9 +10
-        +11). Translokacijom segmenata ova dva hromozoma, mogu se dobiti dva
-        nova hromozoma (+1 +2 +3 +4 +9 +10 +11) i (+7 +8 +5 +6), na primer.
-        Znači da je translokacija genetska promena u kojoj se deo jednog
-        hromozoma odvaja i vezuje za drugi hromozom.
-        <br />
-        <br />
       </p>
-      <Slika path="translokacija" altText="Translokacija" />
+      <Slika
+        path="translokacija"
+        altText="Translokacija"
+        caption="Slika 4.4: Translokacija genoma"
+      />
+      <p>
+        {TAB_INDENT}Translokacija predstavlja razmenjivanje segmenata različitih
+        hromozoma. Na primer, genom (+1 +2 +3 +4 +5 +6)(+7 +8 +9 +10 +11) se
+        sastoji od dva hromozoma (+1 +2 +3 +4 +5 +6) i (+7 +8 +9 +10 +11).
+        Translokacijom segmenata ova dva hromozoma, mogu se dobiti dva nova
+        hromozoma (+1 +2 +3 +4 +9 +10 +11) i (+7 +8 +5 +6), na primer. Znači da
+        je translokacija genetska promena u kojoj se deo jednog hromozoma odvaja
+        i vezuje za drugi hromozom.
+      </p>
+      <Slika
+        path="fissionFusion"
+        altText="Fuzija i Fizija"
+        caption="Slika 4.5: Fuzija i fizija genoma"
+      />
       <p>
         {TAB_INDENT}Osim translokacijom, preuređivanje genoma može se izvršiti
         fuzijom i fizijom. Već spomenuta dva hromozoma (+1 +2 +3 +4 +5 +6) i (+7
@@ -29,7 +37,6 @@ const MultihromozomalniGenomi: React.FC = () => {
         (fizija) u dva potpuno nova hromozoma u odnosu na početne: (+1 +2 +3 +4)
         i (+5 +6 +7 +8 +9).
       </p>
-      <Slika path="fissionFusion" altText="Fuzija i Fizija" />
     </>
   );
 };

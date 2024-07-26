@@ -18,6 +18,8 @@ interface SablonAlogritmaProps {
   endpoint: string;
   buttonText: string;
   resultText: string;
+  title: string;
+  listingOrder: number;
   shortestRearrangement?: boolean;
 }
 
@@ -25,7 +27,9 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
   endpoint,
   buttonText,
   resultText,
+  title,
   shortestRearrangement,
+  listingOrder,
 }) => {
   const [permutationLength, setPermutationLength] = useState(0);
   const [permutation, setPermutation] = useState<number[]>([]);
@@ -99,74 +103,90 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
     <>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
+          backgroundColor: "lightgray",
           padding: "10px",
-          border: "1px solid",
+          borderRadius: "6px",
         }}
       >
-        <label>{PERMUTATION_LENGTH_LABEL}</label>
-        <input
-          type="number"
-          style={{ width: "40px" }}
-          min={0}
-          max={15}
-          onChange={handleChange}
-        />
-        {permutationLength ? <label>{PERMUTATION_INPUT_LABEL}</label> : null}
+        <h4 style={{ marginTop: 0, textAlign: "center" }}> {title}</h4>
+
         <div
           style={{
             display: "flex",
-            flexDirection: "row",
-            gap: "10px",
-            marginTop: "10px",
+            flexDirection: "column",
           }}
         >
-          {[...Array(permutationLength)].map((e, i) => (
-            <input
-              type="number"
-              style={{ width: "40px" }}
-              max={permutationLength}
-              min={-permutationLength}
-              onKeyUp={handleKeyPress}
-              onChange={(event) => {
-                handlePermutationChange(event, i, permutation);
-                setErrorMessage("");
-                setResult(0);
-              }}
-            />
-          ))}
-        </div>
-
-        {!!permutationLength && (
-          <button
-            style={{ marginTop: "20px", width: "40%" }}
-            onClick={() => getResult(permutation)}
+          <label style={{ fontSize: "18px" }}>{PERMUTATION_LENGTH_LABEL}</label>
+          <input
+            type="number"
+            style={{ width: "40px" }}
+            min={0}
+            max={15}
+            onChange={handleChange}
+          />
+          {permutationLength ? <label>{PERMUTATION_INPUT_LABEL}</label> : null}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "10px",
+              marginTop: "10px",
+            }}
           >
-            {buttonText}
-          </button>
-        )}
-        <span style={{ color: "red" }}>{errorMessage}</span>
-        {!!result && (
-          <>
-            <label>
-              {resultText}: {result}
-            </label>
-            {permutations.length ? (
-              <>
-                <label>Permutacije su:</label>
-                {permutations.map((permutation, index) => [
-                  <Permutacija
-                    key={index}
-                    permutation={permutation}
-                    shortestRearrangement={shortestRearrangement}
-                  />,
-                ])}
-              </>
-            ) : null}
-          </>
-        )}
+            {[...Array(permutationLength)].map((e, i) => (
+              <input
+                type="number"
+                style={{ width: "40px" }}
+                max={permutationLength}
+                min={-permutationLength}
+                onKeyUp={handleKeyPress}
+                onChange={(event) => {
+                  handlePermutationChange(event, i, permutation);
+                  setErrorMessage("");
+                  setResult(0);
+                }}
+              />
+            ))}
+          </div>
+
+          {!!permutationLength && (
+            <button
+              style={{ marginTop: "20px", width: "40%" }}
+              onClick={() => getResult(permutation)}
+            >
+              {buttonText}
+            </button>
+          )}
+          <span style={{ color: "red" }}>{errorMessage}</span>
+          {!!result && (
+            <>
+              <label>
+                {resultText}: {result}
+              </label>
+              {permutations.length ? (
+                <>
+                  <label>Permutacije su:</label>
+                  {permutations.map((permutation, index) => [
+                    <Permutacija
+                      key={index}
+                      permutation={permutation}
+                      shortestRearrangement={shortestRearrangement}
+                    />,
+                  ])}
+                </>
+              ) : null}
+            </>
+          )}
+        </div>
       </div>
+      <span
+        style={{
+          display: "table",
+          margin: "auto",
+        }}
+      >
+        Listing {listingOrder} - {title}
+      </span>
     </>
   );
 };

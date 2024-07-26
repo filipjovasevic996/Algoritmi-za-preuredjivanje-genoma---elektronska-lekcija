@@ -6,22 +6,24 @@ const PohlepnaHeuristika: React.FC = () => {
   return (
     <>
       <p>
-        {TAB_INDENT}Pohlepna heuristika za sortiranje po preokretima se zasniva
-        na pronalaženju najkraćeg niza preokreta koji pretvara jednu permutaciju
-        u drugu. Ona donosi optimalne izbore u svakom koraku, nadajući se da će
-        na taj način postići i globalno optimalno rešenje.
+        {TAB_INDENT}Pohlepna heuristika za sortiranje po preokretima predstavlja
+        jedan od načina za pronalaženje najkraćeg niza preokreta koji pretvara
+        jednu permutaciju u drugu. Ona donosi optimalne izbore u svakom koraku,
+        nadajući se da će na taj način postići i globalno optimalno rešenje.
         <br />
-        {TAB_INDENT} Pohlepno sortiranje je prikazano na primeru u kojem se
-        blokovi ređaju na prave pozicije u konačnoj permutaciji. Preuređivanje
-        se vrši iteracijskim pomeranjem elemenata na njihove ispravne pozicije,
-        prema konačnom redosledu u identičkoj permutaciji. Obrnuti interval
-        svakog preokreta je na slici 3.2 prikazan crvenom bojom, a elementi koji
-        su postavljeni u ispravan položaj su prikazani plavom bojom. Vidimo da
-        se blok sintenije 1 od starta nalazi na pravom mestu, pa je označen
-        plavom bojom. Blok sintenije 2 dolazi na svoje mestu u drugoj iteraciji
-        dok blok sintenije 3 u trećoj i tako redom.
+        {TAB_INDENT}Pohlepno sortiranje je prikazano na slici 4.2. Preuređivanje
+        se vrši postavljanjem svakog elementa redom na njihove ispravne
+        pozicije. Interval koji će biti preokrenut je prikazan crvenom bojom, a
+        elementi koji su postavljeni u ispravan položaj su prikazani plavom
+        bojom. Vidi se da je blok sintenije 1 od starta na pravom mestu pa je
+        označen plavom bojom. Blok sintenije 2 dolazi na svoje mesto u trećoj
+        iteraciji, blok sintenije 3 u četvrtoj i tako redom.
       </p>
-      <Slika path="greedySorting" altText="PohlepnoSortiranje" />
+      <Slika
+        path="greedySorting"
+        altText="PohlepnoSortiranje"
+        caption="Slika 4.2: Primer pohlepnog algoritma"
+      />
       <p>
         {TAB_INDENT}Matematički izraženo, element <i>k</i> u permutaciji{" "}
         <i>
@@ -44,24 +46,26 @@ const PohlepnaHeuristika: React.FC = () => {
         fiksira prvih <i>k</i> -1 elemenata permutacije i pomera element{" "}
         <i>k</i> na ispravnu, <i>k</i> -tu poziciju. U slučaju kada je <i>k</i>{" "}
         već na <i>k</i> -toj poziciji permutacije P, ali nije dobro orjentisan,{" "}
-        <i>k</i> -sortiranje se samo okreće <i>k</i> -ti element (primer bloka
+        <i>k</i> -sortiranjem se samo okreće <i>k</i> -ti element (primer bloka
         11 u poslednjem koraku).
         <br />
         {TAB_INDENT}U slučaju preuređivanja mišjeg <i>X</i> hromozoma, na ovaj
-        način se do permutacije identiteta dolazi u 11 koraka, što ne
-        predstavlja optimalnu dužinu, jer je sortiranjem po preokretima
-        preuređivanje kraće za čak 4 koraka. Tako je na ovom primeru dokazano da
-        pohlepno sortiranje ne rezultira najkraćom dužinom preokreta.
-      </p>
-      <p>
-        {TAB_INDENT}U algoritmu koji sledi, izračunava se broj preokreta, tj.
-        dužina preokreta za permutaciju dužine <i>n</i>, od unete permutacije do
-        permutacije identiteta:
+        način se do identičke permutacije dolazi u 11 koraka, što ne predstavlja
+        optimalnu dužinu, jer je sortiranjem po preokretima preuređivanje kraće
+        za čak 4 koraka, što se vidi sa slike 3.2. Tako je na ovom primeru
+        dokazano da pohlepno sortiranje ne rezultira najkraćom dužinom
+        preokreta.
+        <br />
+        {TAB_INDENT}Algoritam napisan na programskom jeziku <i>Typescript</i>{" "}
+        kojim se izračunava najkraći niz preokreta između dve permutacije iste
+        dužine, prikazan je u Listing 4.1.
       </p>
       <SablonAlgoritma
         endpoint="greedy-sorting-by-reversals"
+        title="Pohlepna heuristika"
         buttonText="Izracunaj rastojanje"
         resultText="Rastojanje je"
+        listingOrder={4.1}
       />
     </>
   );
