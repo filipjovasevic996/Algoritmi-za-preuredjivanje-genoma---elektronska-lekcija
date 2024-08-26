@@ -63,7 +63,7 @@ const PohlepnaHeuristika: React.FC = () => {
       <SablonAlgoritma
         endpoint="greedy-sorting-by-reversals"
         title="Pohlepna heuristika"
-        buttonText="Izracunaj rastojanje"
+        buttonText="Izračunaj rastojanje"
         resultText="Rastojanje je"
         listingOrder={4.1}
       />

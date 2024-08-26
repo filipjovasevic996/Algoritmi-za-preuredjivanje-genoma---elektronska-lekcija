@@ -14,16 +14,23 @@ export class AppService {
   greedySortingByReversals(input: { P: number[]; verbose: boolean }) {
     let { P, verbose } = input;
     let permutationDistance: number = 0;
-    const permutations: number[][] = [];
+    const permutations: number[][] = [[...P]];
+    const lefts: number[][] = [];
+    const mids: number[][] = [];
+    let p, left, mid;
+
     const n: number = P.length;
 
     for (let k = 0; k < n; k++) {
       if (P[k] !== k + 1) {
-        P = applySortingReversals(P, k);
+        [p, left, mid] = applySortingReversals(P, k);
+        P = p;
         permutationDistance++;
 
         if (verbose) {
-          permutations.push(P);
+          permutations.push([...P]);
+          lefts.push(left);
+          mids.push(mid);
         }
       }
       if (P[k] === -(k + 1)) {
@@ -31,22 +38,41 @@ export class AppService {
         permutationDistance++;
 
         if (verbose) {
-          permutations.push(P);
+          permutations.push([...P]);
+          lefts.push(left);
+          mids.push([-(k + 1)]);
         }
       }
     }
-    return { permutationDistance, permutations };
+    lefts.push(Array.from({ length: P.length }, (_, i) => i + 1));
+    return { permutationDistance, permutations, lefts, mids };
   }
 
-  numberOfBreakpoints(input: { P: number[] }): number {
-    let { P } = input;
+  numberOfBreakpoints(input: { P: number[] }): [number, number[]] {
+    const { P } = input;
     const length = P.length;
-    let adjancecies = 0;
-    for (let i = 0; i < length - 1; i++) {
-      if (P[i + 1] - P[i] === 1) adjancecies++;
+    let adjacencies = 0;
+    const indexes = new Array(length + 1).fill(1);
+
+    if (P[0] === 1) {
+      adjacencies++;
+      indexes[0] = 0;
     }
 
-    return length + 1 - adjancecies;
+    for (let i = 0; i < length - 1; i++) {
+      if (P[i + 1] - P[i] === 1) {
+        adjacencies++;
+        indexes[i + 1] = 0;
+      }
+    }
+
+    if (P[length - 1] === length) {
+      adjacencies++;
+      indexes[length] = 0;
+    }
+
+    const breakpoints = length + 1 - adjacencies;
+    return [breakpoints, indexes];
   }
 
   getTwoBreakDistance(input: { P: number[][]; Q: number[][] }): number {
@@ -118,7 +144,6 @@ export class AppService {
 
       P = twoBreakOnGenome(P, i, i_p, j, j_p);
       permutations.push(P);
-      console.log(P);
     }
 
     return { permutations, permutationDistance };

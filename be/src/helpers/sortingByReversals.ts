@@ -1,4 +1,7 @@
-export const applySortingReversals = (P: number[], k: number): number[] => {
+export const applySortingReversals = (
+  P: number[],
+  k: number,
+): [number[], number[], number[]] => {
   const n: number = P.length;
 
   for (let i = k; i < n; i++) {
@@ -7,8 +10,8 @@ export const applySortingReversals = (P: number[], k: number): number[] => {
       const Mid: number[] = P.slice(k, i + 1);
       const Right: number[] = P.slice(i + 1);
 
-      return Left.concat(Mid.map((x) => -x).reverse(), Right);
+      return [Left.concat(Mid.map((x) => -x).reverse(), Right), Left, Mid];
     }
   }
-  return P;
+  return [P, [], []];
 };

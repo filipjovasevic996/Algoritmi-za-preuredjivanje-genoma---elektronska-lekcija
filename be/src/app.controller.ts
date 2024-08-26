@@ -9,12 +9,14 @@ export class AppController {
   greedySortingByReversals(@Body() input: { P: number[]; verbose: boolean }): {
     permutations: number[][];
     permutationDistance: number;
+    lefts: number[][];
+    mids: number[][];
   } {
     return this.appService.greedySortingByReversals(input);
   }
 
   @Post('/number-of-breakpoints')
-  numberOfBreakpoints(@Body() input: any): number {
+  numberOfBreakpoints(@Body() input: any): [number, number[]] {
     return this.appService.numberOfBreakpoints(input);
   }
 

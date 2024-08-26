@@ -121,12 +121,15 @@ const removeUndirectedEdge = (
   breakPointGraph: Record<number, number[]>,
   [edgeNode1, edgeNode2]: [number, number],
 ): Record<number, number[]> => {
-  breakPointGraph[edgeNode1] = breakPointGraph[edgeNode1].filter(
-    (node) => node !== edgeNode2,
-  );
-  breakPointGraph[edgeNode2] = breakPointGraph[edgeNode2].filter(
-    (node) => node !== edgeNode1,
-  );
+  const index1 = breakPointGraph[edgeNode1].indexOf(edgeNode2);
+  if (index1 > -1) {
+    breakPointGraph[edgeNode1].splice(index1, 1);
+  }
+
+  const index2 = breakPointGraph[edgeNode2].indexOf(edgeNode1);
+  if (index2 > -1) {
+    breakPointGraph[edgeNode2].splice(index2, 1);
+  }
 
   return breakPointGraph;
 };
@@ -163,13 +166,12 @@ export const twoBreakOnGenomeGraph = (
   return breakPointGraph;
 };
 
-const graphToGenome = (
+export const graphToGenome = (
   breakPointGraph: Record<number, number[]>,
 ): number[][] => {
   const P: number[][] = [];
 
   const cycles = getCycles(breakPointGraph);
-
   for (const cycle of cycles) {
     const chromosome = cycleToChromosome(cycle);
     P.push(chromosome);

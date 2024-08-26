@@ -80,72 +80,150 @@ const TwoBreakDistanceAlgorithm: React.FC<TwoBreakDistanceAlgorithmProps> = ({
     <>
       <div
         style={{
-          backgroundColor: "lightgray",
-          padding: "10px",
-          borderRadius: "6px",
+          backgroundColor: "#f0f4f8", // Softer, modern light gray background
+          padding: "20px", // Increased padding for more space inside the wrapper
+          borderRadius: "10px", // Smoother corners for a modern look
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+          maxWidth: "700px", // Contain content within a reasonable width
+          margin: "20px auto", // Centered with space around
+          border: "1px solid #e0e0e0", // Light border for a defined edge
         }}
       >
-        <h4 style={{ marginTop: 0, textAlign: "center" }}> {title}</h4>
+        <h4
+          style={{
+            marginTop: 0,
+            textAlign: "center",
+            fontSize: "22px",
+            fontWeight: "bold",
+            color: "#333",
+          }}
+        >
+          {title}
+        </h4>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
+            gap: "15px", // Add spacing between label/input groups
           }}
         >
-          <label style={{ fontSize: "18px" }}>{PERMUTATION_LENGTH_LABEL}</label>
+          <label
+            style={{
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: "#555",
+            }}
+          >
+            {PERMUTATION_LENGTH_LABEL}
+          </label>
           <input
             type="number"
-            style={{ width: "40px" }}
+            style={{
+              width: "60px",
+              padding: "8px",
+              fontSize: "16px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              marginBottom: "10px",
+              textAlign: "center",
+            }}
             min={0}
             max={15}
             onChange={handleChange}
           />
-          {permutationLength ? <label>{PERMUTATIONS_INPUT_LABEL}</label> : null}
-          {[
-            [...Array(2)].map((_, index) => (
-              <div
-                key={index}
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "10px",
-                  marginTop: "10px",
-                }}
-              >
-                {[...Array(permutationLength)].map((e, i) => (
-                  <input
-                    type="number"
-                    style={{ width: "40px" }}
-                    max={permutationLength}
-                    min={-permutationLength}
-                    onKeyUp={handleKeyPress}
-                    onChange={(event) => {
-                      handlePermutationChange(
-                        event,
-                        i,
-                        permutations[index],
-                        index
-                      );
-                      setErrorMessage("");
-                      setResult(0);
-                    }}
-                  />
-                ))}
-              </div>
-            )),
-          ]}
+          {permutationLength ? (
+            <label
+              style={{
+                fontSize: "18px",
+                fontWeight: "bold",
+                color: "#555",
+              }}
+            >
+              {PERMUTATIONS_INPUT_LABEL}
+            </label>
+          ) : null}
+
+          {[...Array(2)].map((_, index) => (
+            <div
+              key={index}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "10px",
+                marginTop: "10px",
+                flexWrap: "wrap",
+              }}
+            >
+              {[...Array(permutationLength)].map((e, i) => (
+                <input
+                  key={i}
+                  type="number"
+                  style={{
+                    width: "60px",
+                    padding: "8px",
+                    fontSize: "16px",
+                    borderRadius: "4px",
+                    border: "1px solid #ccc",
+                    textAlign: "center",
+                  }}
+                  max={permutationLength}
+                  min={-permutationLength}
+                  onKeyUp={handleKeyPress}
+                  onChange={(event) => {
+                    handlePermutationChange(
+                      event,
+                      i,
+                      permutations[index],
+                      index
+                    );
+                    setErrorMessage("");
+                    setResult(0);
+                  }}
+                />
+              ))}
+            </div>
+          ))}
+
           {!!permutationLength && (
             <button
-              style={{ marginTop: "20px", width: "40%" }}
+              style={{
+                marginTop: "20px",
+                padding: "10px 20px",
+                fontSize: "16px",
+                fontWeight: "bold",
+                color: "#fff",
+                backgroundColor: "#007BFF",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+                alignSelf: "center",
+                width: "40%",
+                transition: "background-color 0.3s ease",
+              }}
               onClick={() => getResult(permutations)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor = "#0056b3")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor = "#007BFF")
+              }
             >
               {buttonText}
             </button>
           )}
 
-          <span style={{ color: "red" }}>{errorMessage}</span>
+          <span style={{ color: "red", marginTop: "10px", fontWeight: "bold" }}>
+            {errorMessage}
+          </span>
+
           {!!result && (
-            <label>
+            <label
+              style={{
+                marginTop: "20px",
+                fontWeight: "bold",
+                color: "#333",
+              }}
+            >
               {resultText}: {result}
             </label>
           )}
@@ -154,7 +232,10 @@ const TwoBreakDistanceAlgorithm: React.FC<TwoBreakDistanceAlgorithmProps> = ({
       <span
         style={{
           display: "table",
-          margin: "auto",
+          margin: "20px auto 0",
+          fontSize: "16px",
+          fontWeight: "bold",
+          color: "#666",
         }}
       >
         Listing {listingOrder} - {title}
