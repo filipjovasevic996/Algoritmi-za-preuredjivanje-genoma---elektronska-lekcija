@@ -45,13 +45,13 @@ const KgramAlgoritam: React.FC = () => {
     <>
       <div
         style={{
-          backgroundColor: "#f0f4f8", // Softer, modern light gray background
-          padding: "20px", // Increased padding for more space inside the wrapper
-          borderRadius: "10px", // Smoother corners for a modern look
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
-          maxWidth: "500px", // Contain content within a reasonable width
-          margin: "20px auto", // Centered with space around
-          border: "1px solid #e0e0e0", // Light border for a defined edge
+          backgroundColor: "#f0f4f8",
+          padding: "20px",
+          borderRadius: "10px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+          maxWidth: "800px",
+          margin: "20px auto",
+          border: "1px solid #e0e0e0",
         }}
       >
         <h4
@@ -70,8 +70,8 @@ const KgramAlgoritam: React.FC = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "15px", // Add spacing between label/input groups
-            marginTop: "20px", // Add space below the heading
+            gap: "15px",
+            marginTop: "20px",
           }}
         >
           <label
@@ -118,7 +118,7 @@ const KgramAlgoritam: React.FC = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "15px", // Add spacing between input fields
+            gap: "15px",
             marginTop: "10px",
           }}
         >
@@ -199,18 +199,78 @@ const KgramAlgoritam: React.FC = () => {
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
+              flexWrap: "wrap",
+              gap: "20px",
               marginTop: "20px",
+              justifyContent: "center",
             }}
           >
-            {result?.map(([index1, index2], idx) => (
-              <span
-                key={idx}
-                style={{ fontSize: "16px", color: "#333", fontWeight: "bold" }}
-              >
-                ({index1}, {index2})
-              </span>
-            ))}
+            {result?.map(([index1, index2], idx) => {
+              const highlightSegment = (
+                text: string,
+                start: number,
+                length: number,
+                color: string
+              ) => (
+                <>
+                  {text.slice(0, start)}
+                  <span style={{ color: color, fontWeight: "bold" }}>
+                    {text.slice(start, start + length)}
+                  </span>
+                  {text.slice(start + length)}
+                </>
+              );
+
+              return (
+                <div
+                  key={idx}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "150px",
+                    textAlign: "center",
+                  }}
+                >
+                  <div>
+                    <span
+                      style={{
+                        fontSize: "18px",
+                        color: "#333",
+                        fontFamily: "monospace",
+                      }}
+                    >
+                      {highlightSegment(firstChromosome, index1, kMer, "red")}
+                    </span>
+                  </div>
+
+                  <div style={{ marginTop: "10px" }}>
+                    <span
+                      style={{
+                        fontSize: "18px",
+                        color: "#333",
+                        fontFamily: "monospace",
+                      }}
+                    >
+                      {highlightSegment(secondChromosome, index2, kMer, "blue")}
+                    </span>
+                  </div>
+
+                  <div style={{ marginTop: "10px" }}>
+                    <span
+                      style={{
+                        fontSize: "16px",
+                        color: "#333",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      ({index1}, {index2})
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
