@@ -123,10 +123,10 @@ const TackePrekida: React.FC = () => {
         prekidnih tačaka:
       </p>
       <SablonAlgoritma
-        title="Određivanje broja tačaka prekida"
+        title="Određivanje broja prekidnih tačaka"
         endpoint="number-of-breakpoints"
-        buttonText="Izračunaj broj tacaka prekida"
-        resultText="Broj tacaka prekida je"
+        buttonText="Izračunaj broj prekidnih tačaka"
+        resultText="Broj prekidnih tačaka je"
         listingOrder={4.3}
       />
     </>

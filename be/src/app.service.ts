@@ -55,7 +55,6 @@ export class AppService {
     const indexes = new Array(length + 1).fill(1);
 
     if (P[0] === 1) {
-      adjacencies++;
       indexes[0] = 0;
     }
 
@@ -67,7 +66,6 @@ export class AppService {
     }
 
     if (P[length - 1] === length) {
-      adjacencies++;
       indexes[length] = 0;
     }
 
