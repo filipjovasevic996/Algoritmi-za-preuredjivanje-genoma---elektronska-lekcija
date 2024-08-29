@@ -11,6 +11,7 @@ export class AppController {
     permutationDistance: number;
     lefts: number[][];
     mids: number[][];
+    breakpoints: number[][];
   } {
     return this.appService.greedySortingByReversals(input);
   }

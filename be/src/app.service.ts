@@ -17,6 +17,7 @@ export class AppService {
     const permutations: number[][] = [[...P]];
     const lefts: number[][] = [];
     const mids: number[][] = [];
+    const breakpoints: number[][] = [this.numberOfBreakpoints({ P: P })[1]];
     let p, left, mid;
 
     const n: number = P.length;
@@ -29,6 +30,8 @@ export class AppService {
 
         if (verbose) {
           permutations.push([...P]);
+
+          breakpoints.push(this.numberOfBreakpoints({ P: P })[1]);
           lefts.push(left);
           mids.push(mid);
         }
@@ -39,13 +42,14 @@ export class AppService {
 
         if (verbose) {
           permutations.push([...P]);
+          breakpoints.push(this.numberOfBreakpoints({ P: P })[1]);
           lefts.push(left);
           mids.push([-(k + 1)]);
         }
       }
     }
     lefts.push(Array.from({ length: P.length }, (_, i) => i + 1));
-    return { permutationDistance, permutations, lefts, mids };
+    return { permutationDistance, permutations, lefts, mids, breakpoints };
   }
 
   numberOfBreakpoints(input: { P: number[] }): [number, number[]] {

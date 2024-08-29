@@ -54,6 +54,7 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
   const [permutationLength, setPermutationLength] = useState(0);
   const [mids, setMids] = useState<number[][]>([]);
   const [lefts, setLefts] = useState<number[][]>([]);
+  const [breakpoints, setBreakpoints] = useState<number[][]>([]);
   const [permutation, setPermutation] = useState<number[]>([]);
   const [permutations, setPermutations] = useState<number[][]>([]);
   const [indexes, setIndexes] = useState<number[]>([]);
@@ -91,9 +92,10 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
       data = permutationDistance;
       setPermutations(permutations);
     } else {
-      const { permutations, permutationDistance, lefts, mids } =
+      const { permutations, permutationDistance, lefts, mids, breakpoints } =
         await getPermutations(endpoint, { P: permutation, verbose: true });
       data = permutationDistance;
+      setBreakpoints(breakpoints);
       setMids(mids);
       setLefts(lefts);
       setPermutations(permutations);
@@ -320,6 +322,7 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
                         index={index + 1}
                         mid={mids[index]}
                         left={lefts[index]}
+                        breakpoints={breakpoints[index]}
                         permutation={permutation}
                         shortestRearrangement={shortestRearrangement}
                       />

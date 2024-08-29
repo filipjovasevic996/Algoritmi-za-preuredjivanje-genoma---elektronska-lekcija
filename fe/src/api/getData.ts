@@ -15,6 +15,7 @@ export const getPermutations = async (path: string, body: any) => {
     permutationDistance: number;
     lefts: number[][];
     mids: number[][];
+    breakpoints: number[][];
   }>(`${BASE_URL}${path}`, body);
   return data;
 };
