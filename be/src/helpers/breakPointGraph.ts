@@ -71,7 +71,7 @@ export const chromosomeToCycle = (chromosome: number[]): number[] => {
   return cycle;
 };
 
-export const cycleToChromosome = (cycleNodes: number[]): number[] => {
+export const convertToChromosome = (cycleNodes: number[]): number[] => {
   const m: number = cycleNodes.length;
   const chromosome: number[] = new Array(m / 2).fill(0);
 
@@ -166,14 +166,14 @@ export const twoBreakOnGenomeGraph = (
   return breakPointGraph;
 };
 
-export const graphToGenome = (
+export const cycleToChromosome = (
   breakPointGraph: Record<number, number[]>,
 ): number[][] => {
   const P: number[][] = [];
 
   const cycles = getCycles(breakPointGraph);
   for (const cycle of cycles) {
-    const chromosome = cycleToChromosome(cycle);
+    const chromosome = convertToChromosome(cycle);
     P.push(chromosome);
   }
 
@@ -190,7 +190,7 @@ export const twoBreakOnGenome = (
   let genomeGraph = initializeGraph([...blackEdges(P), ...coloredEdges(P)]);
   genomeGraph = twoBreakOnGenomeGraph(genomeGraph, i, i_p, j, j_p);
 
-  P = graphToGenome(genomeGraph);
+  P = cycleToChromosome(genomeGraph);
 
   return P;
 };
