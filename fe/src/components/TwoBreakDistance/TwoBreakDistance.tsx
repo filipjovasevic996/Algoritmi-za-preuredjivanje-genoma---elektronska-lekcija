@@ -73,7 +73,7 @@ const TwoBreakDistance: React.FC = () => {
         Treba uneti samo permutaciju P, jer se za Q uzima jedinična permutacija.
       </p>
       <SablonAlgoritma
-        title="Najkraći scenario transfromacije P u Q"
+        title="Najkraći scenario transfromacije P u identičku permutaciju"
         buttonText="Prikaži permutacije i rastojanje"
         endpoint="shortest-rearrangement-scenario"
         resultText="2-prekid rastojanje je"
