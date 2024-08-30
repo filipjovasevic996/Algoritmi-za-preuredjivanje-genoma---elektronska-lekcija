@@ -110,6 +110,7 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
     else {
       setPermutationLength(length);
       setPermutation(Array(length).fill(0));
+      setPermutations([]);
     }
   };
 
@@ -126,6 +127,7 @@ const SablonAlgoritma: React.FC<SablonAlogritmaProps> = ({
   ) => {
     permutation[index] = parseInt(e.target.value);
     setPermutation([...permutation]);
+    setPermutations([]);
   };
 
   return (
