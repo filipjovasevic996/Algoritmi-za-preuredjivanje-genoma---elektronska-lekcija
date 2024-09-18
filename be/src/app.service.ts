@@ -60,6 +60,7 @@ export class AppService {
 
     if (P[0] === 1) {
       indexes[0] = 0;
+      adjacencies++;
     }
 
     for (let i = 0; i < length - 1; i++) {
